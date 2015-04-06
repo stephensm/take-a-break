@@ -5,13 +5,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Take a Break</title>
     <link type="text/css" href="tab.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
 	
-    <script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript"src="./tab.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="tab.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
     
 
 
@@ -63,8 +66,77 @@
                     <h1>Take a Break</h1>
 					<header class="jumbotron hero-spacer">
 						<h1>Upcoming Events</h1>
-						<p>You do not have any events scheduled </p>
-						<p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#eventModal">
+						<p id="no-events">You do not have any events scheduled </p>
+						<div id='event' style="display: none;">     	<form>
+          <div class="form-inline">
+			<div class="row">
+				<span class="col-md-7">
+            		<label for="break-name" class="control-label">Title:</label>
+            		<input type="text" class="form-control" onfocusout="suggestIdea()" id="break-name"/>
+				</span>
+		    	<span class="col-md-5">
+					<button type="button" class="btn btn-primary" id="random_idea" onclick="getRandomIdea()">I'm Feeling Lazy</button>
+				</span>
+			</div>
+          </div>
+          <div class="form-inline">
+             <div class="row">
+				<div class='col-md-7'>
+					<div class="form-inline">
+						<label for="datetimepicker1" class="control-label">Date:</label>
+						<div class='input-group date' id='datetimepicker1'>
+							<input type='text' class="form-control" />
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class='col-md-5'>
+					<label for="dropdownTime" class="control-label">Time:</label>
+					<select name="time" id="dropdownTime">
+					  <option>9pm  (40 students)</option>
+					  <option>11pm (32 students)</option>
+					  <option>5pm  (15 students)</option>
+					  <option>6pm  (15 students)</option>
+					</select>					
+          		</div>
+			</div>
+		</div>
+		<div class="form-group">
+        	<div class="row">
+				<div class='col-md-7'>	  
+					<div class="container">
+						<div class="row clearfix">
+							<table class="table table-bordered table-hover" id="to-do">
+								<thead>
+									<tr>
+										<th></th>
+										<th class="text-center">Item</th>
+										<th class="text-center">Description</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr id='addr0'>
+										<td><span id='delete_row0'  class='glyphicon glyphicon-remove' onclick='deleteRow(0)' value='0' aria-hidden='true'/></td>
+										<td><input type="text" name='item0'  placeholder='Item name' class="form-control"/></td>
+										<td><input type="text" name='description0'  placeholder='Enter a description' class="form-control"/></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<a id="add_row" class="btn btn-default" onclick="addRow()">Add Row</a>
+					</div>
+				</div>
+				<div class='col-md-5'>	 
+					<label for="allergies-list" class="control-label">Allergies</label>	 
+					<ul class="list-group" id="allergies-list">
+					</ul>
+				</div>
+			</div>
+		</div>
+        </form></div>
+						<p><button type="button" class="btn btn-primary btn-lg" onClick='showEvent()'>
   Make A Break
 </button></p>
 					</header>
@@ -109,15 +181,15 @@
 	
 	
 <!-- Modal -->
-<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade bs-example-modal-lg" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create a Study Break</h4>
+        <h4 class="modal-title" id="myModalLabel">Create a Study Break</h4> 
       </div>
       <div class="modal-body">
-        ...
+ 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

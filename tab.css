@@ -1,3 +1,13 @@
  body {
         padding-top: 70px;
        }
+
+#dropdownTime{
+height:34px;
+}
+#to-do{
+	width: inherit!important;
+}
+.row{
+	margin-bottom:15px;
+}
