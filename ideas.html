@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Ideas - Take a Break</title>
+    <link type="text/css" href="ideas.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="tab.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <h1>Ideas</h1>
+
+    <table id="navTable">
+        <tr>
+            <td id="search" align="left">
+                <label for="searchBox">Search by Keyword:</label>
+                <input type="text" class="form-control" id="searchBox">
+            </td>
+
+            <td align="right">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add New Idea</span>
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <table class="table table-striped" id="ideasTable">
+    <thead>
+      <tr>
+        <th>Popularity Score</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date Added</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10</td>
+        <td>Mario Kart</td>
+        <td>GRTim</td>
+        <td>March 30, 2015</td>
+        <td>Eat food and play stuff</td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>Sushi</td>
+        <td>Bob</td>
+        <td>April 3, 2015</td>
+        <td>Eat sushi</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Sushi</td>
+        <td>Bob</td>
+        <td>April 3, 2015</td>
+        <td>Eat sushi</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Sushi</td>
+        <td>Rob</td>
+        <td>April 13, 2015</td>
+        <td>Eat</td>
+      </tr>
+
+      <tr>
+        <td>-2</td>
+        <td>Nothing</td>
+        <td>?</td>
+        <td>April 1, 2015</td>
+        <td>Do nothing</td>  
+      </tr>
+
+    </tbody>
+  </table>
+
+  <br><br>
+
+  <div id="showMore">
+    <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true">Show More</span>
+    </button>
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Idea</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
