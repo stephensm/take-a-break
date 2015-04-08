@@ -11,12 +11,7 @@ $( document ).ready(function() {
 	  }
 	});
 function deleteRow(e) {
-	console.log(e);
-	var $tr=$('#delete_row'+e).parent().parent();
-	console.log($tr);
-	var row=$tr.index();
-	console.log(row);
-    document.getElementById("to-do").deleteRow(row+1);
+	$('#delete_row'+e).parent().parent().remove();
 }
 function addRow(item){
 	if(typeof item === "undefined") {
@@ -36,7 +31,8 @@ function addRow(item){
 function suggestIdea(){
 	var title=document.getElementById('break-name').value.toLowerCase();
 	if(title.indexOf("ice cream")>-1){
-		deleteRow(0); 
+		$("#allergies-list").empty();
+		$("#to-do").find("tr:gt(0)").remove();
 		addRow("Ice cream");
 		addRow("Cherries");
 		addRow("Bowls");
@@ -62,20 +58,24 @@ function suggestIdea(){
 	}
 }
 function getRandomIdea(){
+	$("#allergies-list").empty();
 	document.getElementById('break-name').value="Bubble Party";
-		deleteRow(0); 
+		$("#to-do").find("tr:gt(0)").remove();
 		addRow("Soap");
 		addRow("Wire");
 		addRow("Bubble Wands");
 		addRow("Buckets");
-	var ul = document.getElementById("allergies-list");
-		var li1 = document.createElement("li");
-		li1.className="list-group-item";
-		var text1 = document.createTextNode("None");
-		li1.appendChild(text1);
-		ul.appendChild(li1);
+
 }
 function showEvent(){
+	$('#make-event').hide();
 	document.getElementById("event").style.display = "inherit";
 	document.getElementById("no-events").remove();
+	
+}
+function clearForm(){
+	$("#to-do").find("tr:gt(0)").remove();
+	document.getElementById('break-name').value="";
+	$("#allergies-list").empty();
+	addRow();
 }
