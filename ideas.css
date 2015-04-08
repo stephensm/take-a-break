@@ -1,0 +1,30 @@
+body {
+    font-size: 140px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#navTable {
+    border-collapse: collapse; 
+    width: 75%; 
+    text-align: center;
+    margin: 0px auto;
+}
+
+#ideasTable {
+    border-collapse: collapse; 
+    width: 75%; 
+    text-align: center;
+    margin: 0px auto;
+}
+
+#showMore {
+    text-align: center;
+    margin: 0px auto;
+}
+
+#searchBox {
+    width:25%;
+}
