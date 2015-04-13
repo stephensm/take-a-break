@@ -1,0 +1,16 @@
+.sorter {
+    position: relative;
+    margin-left: 7px;
+}
+
+.sorterTop {
+    position: absolute;
+    left: 0px;
+    top: -7px;
+}
+
+.sorterBottom {
+    position: absolute;
+    left: 0px;
+    top: 8px;
+}

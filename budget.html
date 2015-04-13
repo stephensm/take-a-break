@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="importEvents.js"></script>
+		<script type="text/javascript" src="budget.js"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="budget.css" />
+	</head>
+<body>
+<script src="lib/Highcharts-4.1.4/js/highcharts.js"></script>
+<script src="lib/Highcharts-4.1.4/js/modules/data.js"></script>
+<script src="lib/Highcharts-4.1.4/js/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
+<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />
+
+<div id="container" style="width: 95%; min-width: 310px; height: 500px; margin: 0 auto"></div>
+
+<div id="budgetlabel">Budget: $<span id="budgetremaining"></span> out of $<span id="budgettotal"></span></div>
+
+<table id="budgettable" class="table table-striped">
+    <colgroup>
+        <col class="col-md-6">
+        <col class="col-md-2">
+        <col class="col-md-2">
+        <col class="col-md-2">
+    </colgroup>
+    <tr>
+        <th>Event Name<span id="nameSorter" class="sorter"></span></th>
+        <th>Date<span id="dateSorter" class="sorter"></span></th>
+        <th>Cost<span id="costSorter" class="sorter"></span></th>
+        <th>Budget Remaining<span id="budgetSorter" class="sorter"></span></th>
+    </tr>
+    <tbody id="budgettablebody"></tbody>
+</table>
+
+	</body>
+</html>
