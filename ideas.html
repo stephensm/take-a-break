@@ -11,7 +11,7 @@
 
     
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="tab.js"></script>
+    <script type="text/javascript" src="ideas.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
@@ -24,14 +24,14 @@
     <table id="navTable">
         <tr>
             <td id="search" align="left">
-                <label for="searchBox">Search by Keyword:</label>
-                <input type="text" class="form-control" id="searchBox">
+                <label for="searchBox">Search: </label>
+                <input type="search" id="searchBox">
             </td>
 
             <td align="right">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Add New Idea</span>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIdeaModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span>
                 </button>
             </td>
         </tr>
@@ -51,39 +51,81 @@
     </thead>
     <tbody>
       <tr>
-        <td>10</td>
+        <td><span id="minus" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            <span id="count1"> 16 </span>
+            <span id="plus" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         <td>Mario Kart</td>
         <td>GRTim</td>
         <td>March 30, 2015</td>
-        <td>Eat food and play stuff</td>
+        <td>Eat food and play Mario Kart all day</td>
       </tr>
 
       <tr>
-        <td>7</td>
-        <td>Sushi</td>
+        <td>12</td>
+        <td>Sushi Break</td>
         <td>Bob</td>
         <td>April 3, 2015</td>
-        <td>Eat sushi</td>
+        <td>Eat a lot of sushi. Raw fish ftw</td>
       </tr>
 
       <tr>
-        <td>4</td>
-        <td>Sushi</td>
+        <td>10</td>
+        <td>Cannolis</td>
+        <td>Sarah</td>
+        <td>April 8, 2015</td>
+        <td>Need I say any more?</td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>Donuts</td>
+        <td>Maria</td>
+        <td>April 10, 2015</td>
+        <td>Eat donuts from Dunkin. Make sure to ask students what they want and track allergies!</td>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>Bubble Tea</td>
+        <td>ABC</td>
+        <td>April 4, 2015</td>
+        <td>Order different types of bubble tea</td>
+      </tr>
+
+      <tr class="hid">
+        <td>5</td>
+        <td>Random Event</td>
         <td>Bob</td>
-        <td>April 3, 2015</td>
-        <td>Eat sushi</td>
+        <td>April 7, 2015</td>
+        <td>Eat random stuff</td>
       </tr>
 
-      <tr>
+      <tr class="hid">
+        <td>5</td>
+        <td>Froyo</td>
+        <td>Steph</td>
+        <td>April 9, 2015</td>
+        <td>Eat froyo</td>
+      </tr>
+
+      <tr class="hid">
         <td>4</td>
-        <td>Sushi</td>
+        <td>Random Food</td>
+        <td>GRTim</td>
+        <td>April 3, 2015</td>
+        <td>I'll bring in random food and you decide whether or not to hate me</td>
+      </tr>
+
+      <tr class="hid">
+        <td>1</td>
+        <td>More Sushi</td>
         <td>Rob</td>
-        <td>April 13, 2015</td>
-        <td>Eat</td>
+        <td>April 1, 2015</td>
+        <td>Eat even more sushi</td>
       </tr>
 
-      <tr>
-        <td>-2</td>
+      <tr class="hid">
+        <td>0</td>
         <td>Nothing</td>
         <td>?</td>
         <td>April 1, 2015</td>
@@ -95,31 +137,38 @@
 
   <br><br>
 
-  <div id="showMore">
+  <div id="showToggle">
     <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true">Show More</span>
+        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> Show More</span>
     </button>
   </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addIdeaModal" tabindex="-1" role="dialog" aria-labelledby="addIdeaModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Idea</h4>
+        <h2 class="modal-title" id="addIdeaModalLabel" align="center">Add New Idea</h4>
       </div>
+
       <div class="modal-body">
-        ...
+        <label for="titleBox">Title: </label>
+        <input type="text" id="titleBox">
+
+        <br><br>
+
+        <label for="descriptionBox">Description: </label>
+        <textarea rows="5" cols="80" id="descriptionBox"></textarea>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="addIdea" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
 
 </body>
 </html>
