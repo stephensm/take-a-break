@@ -1,0 +1,14 @@
+.studwrap ol{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.studwrap{
+	max-height: 300px;
+	overflow: auto;
+	margin-bottom: 20px;
+}
+
+.studwrap .table{
+	margin-bottom: 0px;
+}
