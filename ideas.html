@@ -45,7 +45,7 @@
                     <li>
                         <a class="page-scroll" href="./students.html">Students</a>
                     </li>
-                    <li>
+                    <li class= "active">
                         <a class="page-scroll" href="./ideas.html">Ideas</a>
                     </li>
                 </ul>
@@ -54,130 +54,124 @@
         </div>
         <!-- /.container -->
     </nav>
-
-    <h1>Ideas</h1>
-
-    <table id="navTable">
-        <tr>
-            <td id="search" align="left">
-                <label for="searchBox">Search: </label>
-                <input type="search" id="searchBox">
-            </td>
-
-            <td align="right">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addIdeaModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span>
-                </button>
-            </td>
-        </tr>
-    </table>
-
-    <br><br>
-
-    <table class="table table-striped" id="ideasTable">
-    <thead>
-      <tr>
-        <th>Popularity Score</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Date Added</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span id="minus" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            <span id="count1"> 16 </span>
-            <span id="plus" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <td>Mario Kart</td>
-        <td>GRTim</td>
-        <td>March 30, 2015</td>
-        <td>Eat food and play Mario Kart all day</td>
-      </tr>
-
-      <tr>
-        <td>12</td>
-        <td>Sushi Break</td>
-        <td>Bob</td>
-        <td>April 3, 2015</td>
-        <td>Eat a lot of sushi. Raw fish ftw</td>
-      </tr>
-
-      <tr>
-        <td>10</td>
-        <td>Cannolis</td>
-        <td>Sarah</td>
-        <td>April 8, 2015</td>
-        <td>Need I say any more?</td>
-      </tr>
-
-      <tr>
-        <td>10</td>
-        <td>Donuts</td>
-        <td>Maria</td>
-        <td>April 10, 2015</td>
-        <td>Eat donuts from Dunkin. Make sure to ask students what they want and track allergies!</td>
-      </tr>
-
-      <tr>
-        <td>6</td>
-        <td>Bubble Tea</td>
-        <td>ABC</td>
-        <td>April 4, 2015</td>
-        <td>Order different types of bubble tea</td>
-      </tr>
-
-      <tr class="hid">
-        <td>5</td>
-        <td>Random Event</td>
-        <td>Bob</td>
-        <td>April 7, 2015</td>
-        <td>Eat random stuff</td>
-      </tr>
-
-      <tr class="hid">
-        <td>5</td>
-        <td>Froyo</td>
-        <td>Steph</td>
-        <td>April 9, 2015</td>
-        <td>Eat froyo</td>
-      </tr>
-
-      <tr class="hid">
-        <td>4</td>
-        <td>Random Food</td>
-        <td>GRTim</td>
-        <td>April 3, 2015</td>
-        <td>I'll bring in random food and you decide whether or not to hate me</td>
-      </tr>
-
-      <tr class="hid">
-        <td>1</td>
-        <td>More Sushi</td>
-        <td>Rob</td>
-        <td>April 1, 2015</td>
-        <td>Eat even more sushi</td>
-      </tr>
-
-      <tr class="hid">
-        <td>0</td>
-        <td>Nothing</td>
-        <td>?</td>
-        <td>April 1, 2015</td>
-        <td>Do nothing</td>  
-      </tr>
-
-    </tbody>
-  </table>
-
-  <br><br>
-
-  <div id="showToggle">
-    <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> Show More</span>
-    </button>
-  </div>
+    <div class="container">
+    	<div class="row"><div class="col-lg-12"><h1>Ideas</h1></div></div>
+	
+		<span class="col-md-7">
+					<label for="searchBox">Search: </label>
+					<input type="search" id="searchBox">
+		</span>
+		<span class="col-md-5">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addIdeaModal">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span>
+					</button>
+		</span>
+	
+		<div class="col-md-12">
+		<table class="table table-striped" id="ideasTable">
+		<thead>
+		  <tr>
+			<th>Popularity Score</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Date Added</th>
+			<th>Description</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<td><span id="minus" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+				<span id="count1"> 16 </span>
+				<span id="plus" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+			<td>Mario Kart</td>
+			<td>GRTim</td>
+			<td>March 30, 2015</td>
+			<td>Eat food and play Mario Kart all day</td>
+		  </tr>
+	
+		  <tr>
+			<td>12</td>
+			<td>Sushi Break</td>
+			<td>Bob</td>
+			<td>April 3, 2015</td>
+			<td>Eat a lot of sushi. Raw fish ftw</td>
+		  </tr>
+	
+		  <tr>
+			<td>10</td>
+			<td>Cannolis</td>
+			<td>Sarah</td>
+			<td>April 8, 2015</td>
+			<td>Need I say any more?</td>
+		  </tr>
+	
+		  <tr>
+			<td>10</td>
+			<td>Donuts</td>
+			<td>Maria</td>
+			<td>April 10, 2015</td>
+			<td>Eat donuts from Dunkin. Make sure to ask students what they want and track allergies!</td>
+		  </tr>
+	
+		  <tr>
+			<td>6</td>
+			<td>Bubble Tea</td>
+			<td>ABC</td>
+			<td>April 4, 2015</td>
+			<td>Order different types of bubble tea</td>
+		  </tr>
+	
+		  <tr class="hid">
+			<td>5</td>
+			<td>Random Event</td>
+			<td>Bob</td>
+			<td>April 7, 2015</td>
+			<td>Eat random stuff</td>
+		  </tr>
+	
+		  <tr class="hid">
+			<td>5</td>
+			<td>Froyo</td>
+			<td>Steph</td>
+			<td>April 9, 2015</td>
+			<td>Eat froyo</td>
+		  </tr>
+	
+		  <tr class="hid">
+			<td>4</td>
+			<td>Random Food</td>
+			<td>GRTim</td>
+			<td>April 3, 2015</td>
+			<td>I'll bring in random food and you decide whether or not to hate me</td>
+		  </tr>
+	
+		  <tr class="hid">
+			<td>1</td>
+			<td>More Sushi</td>
+			<td>Rob</td>
+			<td>April 1, 2015</td>
+			<td>Eat even more sushi</td>
+		  </tr>
+	
+		  <tr class="hid">
+			<td>0</td>
+			<td>Nothing</td>
+			<td>?</td>
+			<td>April 1, 2015</td>
+			<td>Do nothing</td>  
+		  </tr>
+	
+		</tbody>
+	  </table>
+	
+	  </div>
+	
+	  <div id="showToggle">
+		<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> Show More</span>
+		</button>
+	  </div>
+	</div>
 
 <!-- Modal -->
 <div class="modal fade" id="addIdeaModal" tabindex="-1" role="dialog" aria-labelledby="addIdeaModalLabel" aria-hidden="true">
