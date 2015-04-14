@@ -1,33 +1,22 @@
-h1 {
-    text-align: center;
-}
-
-label {
-    font-size: 20px;
+body {
+    padding-top: 70px;
 }
 
 td {
-    /*max-width: 50px;*/
     overflow: hidden;
+}
+
+#title {
+    margin-bottom: 40px;
 }
 
 #navTable {
     border-collapse: collapse; 
-    width: 75%; 
     margin: 0px auto;
-}
-
-#ideasTable {
-    border-collapse: collapse; 
-    width: 75%; 
-    margin: 0px auto;
-    text-align: left;
-    font-size: 20px;
 }
 
 #showToggle {
     text-align: center;
-    margin: 0px auto;
 }
 
 #searchBox {
@@ -40,4 +29,11 @@ td {
 
 .downvoted {
     color: red;
+}
+
+.tableWrap {
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
