@@ -6,6 +6,11 @@ label {
     font-size: 20px;
 }
 
+td {
+    /*max-width: 50px;*/
+    overflow: hidden;
+}
+
 #navTable {
     border-collapse: collapse; 
     width: 75%; 
@@ -27,4 +32,12 @@ label {
 
 #searchBox {
     width:25%;
+}
+
+.upvoted {
+    color: green;
+}
+
+.downvoted {
+    color: red;
 }

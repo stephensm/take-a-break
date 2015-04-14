@@ -15,18 +15,22 @@ $(document).ready(function(){
 
 
     // Voting system - this should be restricted to one vote per user
-    $("#plus").click(function(){
-      var text = $('#count1').text();
-      var number = parseInt(text, 10);
-      number = number+=1;
-      $("#count1").text(number);
+    $(".glyphicon-plus").click(function(){
+      var td = $(this).parent();
+      var thisCount = td.find('#count');
+      var text = thisCount.text();
+      var number = parseInt(text, 10) + 1;
+      thisCount.html(number);
+      thisCount.className = "upvoted";
     });
 
-    $("#minus").click(function(){
-      var text = $('#count1').text();
-      var number = parseInt(text, 10);
-      number = number-=1;
-      $("#count1").text(number);
+    $(".glyphicon-minus").click(function(){
+      var td = $(this).parent();
+      var thisCount = td.find('#count');
+      var text = thisCount.text();
+      var number = parseInt(text, 10) - 1;
+      thisCount.html(number);
+      thisCount.className = "downvoted";
     });
 
 
@@ -54,7 +58,7 @@ $(document).ready(function(){
     // Searching functionality
     $("#searchBox").keyup(function() {
       var userInput = $(this).val().toLowerCase();
-      
+
       $("#ideasTable td").map(function(index, value) {
         if($(value).text().toLowerCase().indexOf(userInput) >= 0)
           $(value).css("background-color", "yellow");
