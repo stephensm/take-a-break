@@ -12,3 +12,20 @@
 .studwrap .table{
 	margin-bottom: 0px;
 }
+
+#myModal ol{
+    list-style: none;
+    padding-left: 0px;
+    display: block;
+}
+
+.modal-body .right{
+    background-color: green !important;
+	width: 100%;
+}
+
+.modal-body .wrong{
+	background-color: red;
+	z-index: 1000000;
+	width: 100%;
+}
