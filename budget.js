@@ -73,7 +73,9 @@ $(function () {
                 y: -2,
                 format: '${value:.0f}'
             },
-            showFirstLabel: false
+            showFirstLabel: false,
+            min: 0,
+            max: events[0]['Total']
         },
 
         legend: {
