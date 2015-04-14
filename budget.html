@@ -14,35 +14,77 @@
         
         <link rel="stylesheet" type="text/css" href="budget.css" />
 	</head>
-<body>
-<script src="lib/Highcharts-4.1.4/js/highcharts.js"></script>
-<script src="lib/Highcharts-4.1.4/js/modules/data.js"></script>
-<script src="lib/Highcharts-4.1.4/js/modules/exporting.js"></script>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-<!-- Additional files for the Highslide popup effect -->
-<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
-<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="./tab.html">Take a Break</a>
+            </div>
 
-<div id="container" style="width: 95%; min-width: 310px; height: 500px; margin: 0 auto"></div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    
+                    <li>
+                        <a class="page-scroll" href="./tab.html">Events</a>
+                    </li>
+                    <li class= "active">
+                        <a class="page-scroll" href="./budget.html">Budget</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="./students.html">Students</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="./ideas.html">Ideas</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <script src="lib/Highcharts-4.1.4/js/highcharts.js"></script>
+    <script src="lib/Highcharts-4.1.4/js/modules/data.js"></script>
+    <script src="lib/Highcharts-4.1.4/js/modules/exporting.js"></script>
 
-<div id="budgetlabel">Budget: $<span id="budgetremaining"></span> out of $<span id="budgettotal"></span></div>
+    <!-- Additional files for the Highslide popup effect -->
+    <script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
+    <script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />
 
-<table id="budgettable" class="table table-striped">
-    <colgroup>
-        <col class="col-md-6">
-        <col class="col-md-2">
-        <col class="col-md-2">
-        <col class="col-md-2">
-    </colgroup>
-    <tr>
-        <th>Event Name<span id="nameSorter" class="sorter"></span></th>
-        <th>Date<span id="dateSorter" class="sorter"></span></th>
-        <th>Cost<span id="costSorter" class="sorter"></span></th>
-        <th>Budget Remaining<span id="budgetSorter" class="sorter"></span></th>
-    </tr>
-    <tbody id="budgettablebody"></tbody>
-</table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Budget History</h1>
+                <div id="container" style="width: 95%; min-width: 310px; height: 500px; margin: 0 auto"></div>
 
-	</body>
+                <div id="budgetlabel"><h2>Budget: $<span id="budgetremaining"></span> out of $<span id="budgettotal"></span></h2></div>
+
+                <table id="budgettable" class="table table-striped">
+                    <colgroup>
+                        <col class="col-md-6">
+                        <col class="col-md-2">
+                        <col class="col-md-2">
+                        <col class="col-md-2">
+                    </colgroup>
+                    <tr>
+                        <th>Event Name<span id="nameSorter" class="sorter"></span></th>
+                        <th>Date<span id="dateSorter" class="sorter"></span></th>
+                        <th>Cost<span id="costSorter" class="sorter"></span></th>
+                        <th>Budget Remaining<span id="budgetSorter" class="sorter"></span></th>
+                    </tr>
+                    <tbody id="budgettablebody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

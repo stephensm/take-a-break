@@ -32,24 +32,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Events</a>
+                <a class="navbar-brand page-scroll" href="./tab.html">Take a Break</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
+                    <li class= "active">
+                        <a class="page-scroll" href="./tab.html">Events</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#budget">Budget</a>
+                        <a class="page-scroll" href="./budget.html">Budget</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#students">Students</a>
+                        <a class="page-scroll" href="./students.html">Students</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#ideas">Ideas</a>
+                        <a class="page-scroll" href="./ideas.html">Ideas</a>
                     </li>
                 </ul>
             </div>
@@ -62,148 +62,83 @@
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Take a Break</h1>
-					<header class="jumbotron hero-spacer">
-						<h1>Upcoming Events</h1>
-						<p id="no-events">You do not have any events scheduled </p>
-						<div id='event' style="display: none;">     	<form>
-          <div class="form-inline">
-			<div class="row">
-				<span class="col-md-7">
-            		<label for="break-name" class="control-label">Title:</label>
-            		<input type="text" class="form-control" onfocusout="suggestIdea()" id="break-name"/>
-				</span>
-		    	<span class="col-md-5">
-					<button type="button" class="btn btn-primary" id="random_idea" onclick="getRandomIdea()">I'm Feeling Lazy</button>
-					<button type="button" class="btn btn-primary" id="random_idea" onclick="clearForm()">Clear</button>
-				
-				</span>
-			</div>
-          </div>
-          <div class="form-inline">
-             <div class="row">
-				<div class='col-md-7'>
-					<div class="form-inline">
-						<label for="datetimepicker1" class="control-label">Date:</label>
-						<div class='input-group date' id='datetimepicker1'>
-							<input type='text' class="form-control" />
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class='col-md-5'>
-					<label for="dropdownTime" class="control-label">Time:</label>
-					<select name="time" id="dropdownTime">
-					  <option>9pm  (40 students)</option>
-					  <option>11pm (32 students)</option>
-					  <option>5pm  (15 students)</option>
-					  <option>6pm  (15 students)</option>
-					</select>					
-          		</div>
-			</div>
-		</div>
-		<div class="form-group">
-        	<div class="row">
-				<div class='col-md-7'>	  
-					<div class="container">
-						<div class="row clearfix">
-							<table class="table table-bordered table-hover" id="to-do">
-								<thead>
-									<tr>
-										<th></th>
-										<th class="text-center">Item</th>
-										<th class="text-center">Description</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr id='addr0'>
-										<td><span id='delete_row0'  class='glyphicon glyphicon-remove' onclick='deleteRow(0)' value='0' aria-hidden='true'/></td>
-										<td><input type="text" name='item0'  placeholder='Item name' class="form-control"/></td>
-										<td><input type="text" name='description0'  placeholder='Enter a description' class="form-control"/></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<a id="add_row" class="btn btn-default" onclick="addRow()">Add Row</a>
-					</div>
-				</div>
-				<div class='col-md-5'>	 
-					<label for="allergies-list" class="control-label">Allergies</label>	 
-					<ul class="list-group" id="allergies-list">
-					</ul>
-				</div>
-			</div>
-		</div>
-        </form></div>
-						<p><button type="button" id="make-event" class="btn btn-primary btn-lg" onClick='showEvent()'>
-  Make A Break
-</button></p>
-					</header>
+                <div class="col-md-12">
+                    <h1>Upcoming Events</h1>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="budget" class="budget-section">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Budget History</h1>
+                <div class="col-md-12 jumbotron hero-spacer">
+                    <p id="no-events">You do not have any events scheduled </p>
+                    <div id='event' style="display: none;">
+                        <h2>Event Information</h2>
+                        <form>
+                            <div class="form-inline">
+                                <div class="row">
+                                    <span class="col-md-7">
+                                        <label for="break-name" class="control-label">Title:</label>
+                                        <input type="text" class="form-control" onfocusout="suggestIdea()" id="break-name"/>
+                                    </span>
+                                    <span class="col-md-5">
+                                        <button type="button" class="btn btn-primary" id="random_idea" onclick="getRandomIdea()">I'm Feeling Lazy</button>
+                                        <button type="button" class="btn btn-primary" id="random_idea" onclick="clearForm()">Clear</button>
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-7'>
+                                        <label for="datetimepicker1" class="control-label">Date:</label>
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class='col-md-5'>
+                                        <label for="dropdownTime" class="control-label">Time:</label>
+                                        <select name="time" id="dropdownTime">
+                                            <option>9pm  (40 students)</option>
+                                            <option>11pm (32 students)</option>
+                                            <option>5pm  (15 students)</option>
+                                            <option>6pm  (15 students)</option>
+                                        </select>					
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class='col-md-7'>	  
+                                            <div class="clearfix">
+                                                <table class="table table-bordered table-hover" id="to-do">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th class="text-center">Item</th>
+                                                            <th class="text-center">Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr id='addr0'>
+                                                            <td><span id='delete_row0'  class='glyphicon glyphicon-remove' onclick='deleteRow(0)' value='0' aria-hidden='true'/></td>
+                                                            <td><input type="text" name='item0'  placeholder='Item name' class="form-control"/></td>
+                                                            <td><input type="text" name='description0'  placeholder='Enter a description' class="form-control"/></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <a id="add_row" class="btn btn-default" onclick="addRow()">Add Row</a>
+                                    </div>
+                                    <div class='col-md-5'>	 
+                                        <label for="allergies-list" class="control-label">Allergies</label>	 
+                                        <ul class="list-group" id="allergies-list"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <p><button type="button" id="make-event" class="btn btn-primary btn-lg" onClick='showEvent()'>Make A Break</button></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="students" class="students-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Students</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="ideas" class="idea-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Ideas</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-	
-	
-	
-<!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create a Study Break</h4> 
-      </div>
-      <div class="modal-body">
- 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Make a Break</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-	
 
 </body>
 </html>
