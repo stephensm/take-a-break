@@ -49,4 +49,19 @@ $(document).ready(function(){
       document.getElementById('titleBox').value = '';
       document.getElementById('descriptionBox').value = '';
     });
+
+
+    // Searching functionality
+    $("#searchBox").keyup(function() {
+      var userInput = $(this).val().toLowerCase();
+      
+      $("#ideasTable td").map(function(index, value) {
+        if($(value).text().toLowerCase().indexOf(userInput) >= 0)
+          $(value).css("background-color", "yellow");
+        else
+          $(value).css("background-color", "white");
+        if(userInput === "")
+          $(value).css("background-color", "white");
+      });
+    });
 });
