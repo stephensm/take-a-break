@@ -1,6 +1,7 @@
-h1 {
-    text-align: center;
-}
+ body {
+        padding-top: 70px;
+       }
+
 
 label {
     font-size: 20px;
