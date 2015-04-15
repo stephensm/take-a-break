@@ -1,28 +1,26 @@
- body {
-        padding-top: 70px;
-       }
-
-
-label {
-    font-size: 20px;
+body {
+    padding-top: 70px;
 }
 
-#navTable {
-    border-collapse: collapse; 
-    margin: 0px auto;
+td {
+    overflow: hidden;
 }
 
 #ideasTable {
-    border-collapse: collapse; 
-    margin: 0px auto;
-    text-align: left;
-    font-size: 20px;
+    table-layout: fixed;
+}
+
+#title {
+    margin-bottom: 40px;
 }
 
 #showToggle {
     text-align: center;
-    margin: 0px auto;
 }
 
-#searchBox {
+.table-striped {
+    max-height: 300px;
+    overflow: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }

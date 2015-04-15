@@ -63,7 +63,7 @@
     <section id="students" class="students-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-121">
+                <div class="col-md-12">
                     <h1>Students</h1>
                     <br />
                     <div class="lead">Allergies</div>
@@ -123,7 +123,7 @@
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#">Click for Modal</a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
                                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
@@ -134,7 +134,7 @@
                                         <li>Nuts</li>
                                     </ol>
                                 </td>
-                                <td><a href="#">Click for Modal</a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
                                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
@@ -145,7 +145,7 @@
                                         <li>Vegan</li>
                                     </ol>
                                 </td>
-                                <td><a href="#">Click for Modal</a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
                                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
@@ -157,7 +157,7 @@
                                         <li>Shellfish</li>
                                     </ol>
                                 </td>
-                                <td><a href="#">Click for Modal</a></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
                                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                             <tr>
                         </table>
@@ -176,14 +176,46 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create a Study Break</h4> 
+        <h4 class="modal-title" id="myModalLabel">Student Schedule (canned)</h4> 
       </div>
       <div class="modal-body">
- 
+        <!-- insert canned stuff here -->
+        <!-- this should all be auto-generated -->
+        <table>
+            <tr>
+                <td class="col-lg-1"><strong>Time</strong></td>
+                <td class="col-lg-1"><strong>Monday</strong></td>
+                <td class="col-lg-1"><strong>Tuesday</strong></td>
+                <td class="col-lg-1"><strong>Wednesday</strong></td>
+                <td class="col-lg-1"><strong>Thursday</strong></td>
+                <td class="col-lg-1"><strong>Friday</strong></td>
+                <td class="col-lg-1"><strong>Saturday</strong></td> 
+                <td class="col-lg-1"><strong>Sunday</strong></td> 
+            </tr>
+            <tr>
+                <td class="col-lg-1"><strong>12am</strong></td>
+                <td class="col-lg-1" style="color:green">Available</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+            </tr>
+            <tr>
+                <td class="col-lg-1"><strong>1am</strong></td>
+                <td class="col-lg-1" style="color:green">Available</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+                <td class="col-lg-1" style="color:red">Unavailable</td>
+            </tr>
+        </table>              
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Make a Break</button>
       </div>
     </div>
   </div>

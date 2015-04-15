@@ -15,18 +15,22 @@ $(document).ready(function(){
 
 
     // Voting system - this should be restricted to one vote per user
-    $("#plus").click(function(){
-      var text = $('#count1').text();
-      var number = parseInt(text, 10);
-      number = number+=1;
-      $("#count1").text(number);
+    $(".glyphicon-plus").click(function(){
+      var td = $(this).parent();
+      var thisCount = td.find('#count');
+      var text = thisCount.text();
+      var number = parseInt(text, 10) + 1;
+      thisCount.html(number);
+      thisCount.className = "upvoted";
     });
 
-    $("#minus").click(function(){
-      var text = $('#count1').text();
-      var number = parseInt(text, 10);
-      number = number-=1;
-      $("#count1").text(number);
+    $(".glyphicon-minus").click(function(){
+      var td = $(this).parent();
+      var thisCount = td.find('#count');
+      var text = thisCount.text();
+      var number = parseInt(text, 10) - 1;
+      thisCount.html(number);
+      thisCount.className = "downvoted";
     });
 
 
@@ -40,7 +44,7 @@ $(document).ready(function(){
       var cell4 = row.insertCell(3);
       var cell5 = row.insertCell(4);
 
-      cell1.innerHTML = '0';
+      cell1.innerHTML = '<button class="glyphicon glyphicon-minus" aria-hidden="true"></button><span id="count"> 0 </span><button class="glyphicon glyphicon-plus" aria-hidden="true"></button>';
       cell2.innerHTML = document.getElementById('titleBox').value;
       cell3.innerHTML = 'You';
       cell4.innerHTML = 'April 15, 2015';
@@ -54,7 +58,7 @@ $(document).ready(function(){
     // Searching functionality
     $("#searchBox").keyup(function() {
       var userInput = $(this).val().toLowerCase();
-      
+
       $("#ideasTable td").map(function(index, value) {
         if($(value).text().toLowerCase().indexOf(userInput) >= 0)
           $(value).css("background-color", "yellow");
