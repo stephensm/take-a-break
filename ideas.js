@@ -43,11 +43,12 @@ $(document).ready(function(){
       var cell3 = row.insertCell(2);
       var cell4 = row.insertCell(3);
       var cell5 = row.insertCell(4);
+      var d = new Date();
 
       cell1.innerHTML = '<button class="glyphicon glyphicon-minus" aria-hidden="true"></button><span id="count"> 0 </span><button class="glyphicon glyphicon-plus" aria-hidden="true"></button>';
       cell2.innerHTML = document.getElementById('titleBox').value;
       cell3.innerHTML = 'You';
-      cell4.innerHTML = 'April 15, 2015';
+      cell4.innerHTML = d.toDateString();
       cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
 
       document.getElementById('titleBox').value = '';
