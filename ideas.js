@@ -44,7 +44,7 @@ $(document).ready(function(){
       var cell4 = row.insertCell(3);
       var cell5 = row.insertCell(4);
 
-      cell1.innerHTML = '0';
+      cell1.innerHTML = '<button class="glyphicon glyphicon-minus" aria-hidden="true"></button><span id="count"> 0 </span><button class="glyphicon glyphicon-plus" aria-hidden="true"></button>';
       cell2.innerHTML = document.getElementById('titleBox').value;
       cell3.innerHTML = 'You';
       cell4.innerHTML = 'April 15, 2015';

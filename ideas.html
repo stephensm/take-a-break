@@ -62,21 +62,16 @@
 					<label for="searchBox">Search: </label>
 					<input type="search" id="searchBox">
 		</span>
-		<span class="col-md-2">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addIdeaModal">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span>
-					</button>
-		</span>
+		<span class="col-md-2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addIdeaModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span></button></span>
 	
-		<div class="col-md-12">
-		<table class="table table-striped tableWrap" id="ideasTable">
+		<table class="table table-striped col-md-12" id="ideasTable">
 		<thead>
 		  <tr>
-			<th>Popularity Score</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>Date Added</th>
-			<th>Description</th>
+			<th class="col-md-2">Popularity Score</th>
+			<th class="col-md-2">Title</th>
+			<th class="col-md-1">Author</th>
+			<th class="col-md-2">Date Added</th>
+			<th class="col-md-5">Description</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -228,7 +223,6 @@
       </div>
     </div>
   </div>
-</div>
 
 </body>
 </html>
