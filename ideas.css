@@ -6,32 +6,19 @@ td {
     overflow: hidden;
 }
 
-#title {
-    margin-bottom: 40px;
+#ideasTable {
+    table-layout: fixed;
 }
 
-#navTable {
-    border-collapse: collapse; 
-    margin: 0px auto;
+#title {
+    margin-bottom: 40px;
 }
 
 #showToggle {
     text-align: center;
 }
 
-#searchBox {
-    width:25%;
-}
-
-.upvoted {
-    color: green;
-}
-
-.downvoted {
-    color: red;
-}
-
-.tableWrap {
+.table-striped {
     max-height: 300px;
     overflow: auto;
     margin-top: 40px;
