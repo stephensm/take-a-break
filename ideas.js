@@ -48,10 +48,12 @@ $(document).ready(function(){
       cell2.innerHTML = document.getElementById('titleBox').value;
       cell3.innerHTML = 'You';
       cell4.innerHTML = 'April 15, 2015';
-      cell5.innerHTML = document.getElementById('descriptionBox').value;
+      cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
 
       document.getElementById('titleBox').value = '';
       document.getElementById('descriptionBox').value = '';
+
+      $(row).effect("highlight", {}, 3000);
     });
 
 
