@@ -1,5 +1,6 @@
  var i=1;
 
+var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
 $( document ).ready(function() {
 	if(getUrlParameter('event')){
 		showEvent();
@@ -32,14 +33,31 @@ $( document ).ready(function() {
 	}
 	$('#datetimepicker1').datepicker({    
 		autoclose: true,
-    	todayHighlight: true});
+    	todayHighlight: true
     });
-	$('#break-name').keypress(function (e) {
-	  if (e.which == 13) {
-		console.log($('#break-name'))
-		return false;    //<---- Add this line
-	  }
-	});
+    
+    // Autocomplete stuff
+    $('#break-name').autocomplete({
+        minLength: 0,
+        select: function(e, ui) {
+            $('#break-name').val(ui.item.value);
+            if (!e.keyCode || e.keyCode != 13) {
+                suggestIdea();
+            }
+            return false;
+        },
+    })
+    .keydown(function(e) {
+        if (e.keyCode == 13) {
+            suggestIdea();
+            return false;
+        }
+    })
+    .focus(function(e) {
+        $('#break-name').autocomplete('search', '');
+    });
+    $('#break-name').autocomplete('option', 'source', ideas);
+});
 function deleteRow(e) {
 	$('#delete_row'+e).parent().parent().remove();
 }
@@ -58,10 +76,24 @@ function addRow(item){
 	cell3.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md'/>";
   	i++;
 }
+
+var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
 function suggestIdea(){
 	var title=document.getElementById('break-name').value.toLowerCase();
-	if(title.indexOf("ice cream")>-1){
+	if (title.indexOf("ice cream")>-1){
 		makeIce();
+	} else if (title.indexOf("mario kart")>-1){
+		makeMario();
+	} else if (title.indexOf("bubble tea")>-1){
+		makeTea();
+	} else if (title.indexOf("sushi break")>-1){
+		makeSushi();
+	} else if (title.indexOf("cannolis")>-1){
+		makeCannolies();
+	} else if (title.indexOf("donuts")>-1){
+		makeDonuts();
+	} else if (title.indexOf("bubble party")>-1){
+		makeBubbles();
 	}
 }
 function getRandomIdea(){
