@@ -1,6 +1,7 @@
 body {
-        padding-top: 70px;
-       }
+    padding-top: 70px;
+}
+
 .studwrap ol{
     list-style: none;
     padding-left: 0px;
@@ -20,6 +21,12 @@ body {
     list-style: none;
     padding-left: 0px;
     display: block;
+}
+
+#myModal table{
+	width: 100%;
+	display: inline-block;
+    overflow: scroll;
 }
 
 .modal-body .right{
