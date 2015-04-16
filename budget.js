@@ -46,7 +46,7 @@ $(function () {
     //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
     $('#container').highcharts({
         title: {
-            text: 'Budget Remaining Over Time'
+            text: ''
         },
 
         xAxis: {

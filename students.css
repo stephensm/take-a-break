@@ -41,9 +41,13 @@ body {
 }
 
 .available-time{
-	color: green;
+	color: white;
+    background-color: #006600;
+    border: solid white;
 }
 
 .unavailable-time{
-	color: red;
+	color: white;
+    background-color: #990000;
+    border: solid white;
 }
