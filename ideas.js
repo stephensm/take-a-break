@@ -13,24 +13,65 @@ $(document).ready(function(){
       }
     });
 
-
     // Voting system - this should be restricted to one vote per user
     $(".glyphicon-plus").click(function(){
       var td = $(this).parent();
       var thisCount = td.find('#count');
       var text = thisCount.text();
-      var number = parseInt(text, 10) + 1;
-      thisCount.html(number);
-      thisCount.className = "upvoted";
+
+      if($(td).hasClass("upvoted")) {
+        var number = parseInt(text, 10) - 1;
+        thisCount.html(number);
+        $(this).css("background-color", "transparent");
+      }
+
+      else if($(td).hasClass("downvoted")) {
+        var number = parseInt(text, 10) + 2;
+        thisCount.html(number);
+
+        $(td).toggleClass("downvoted");
+        $(this).css("background-color", "#009647");
+        var downvote = td.find('.glyphicon-minus');
+        $(downvote).css("background-color", "transparent");
+      }
+
+      else {
+        var number = parseInt(text, 10) + 1;
+        thisCount.html(number);
+        $(this).css("background-color", "#009647");
+      }
+
+      $(td).toggleClass("upvoted");
     });
 
     $(".glyphicon-minus").click(function(){
       var td = $(this).parent();
       var thisCount = td.find('#count');
       var text = thisCount.text();
-      var number = parseInt(text, 10) - 1;
-      thisCount.html(number);
-      thisCount.className = "downvoted";
+
+      if($(td).hasClass("downvoted")) {
+        var number = parseInt(text, 10) + 1;
+        thisCount.html(number);
+        $(this).css("background-color", "transparent");
+      }
+
+      else if($(td).hasClass("upvoted")) {
+        var number = parseInt(text, 10) - 2;
+        thisCount.html(number);
+
+        $(td).toggleClass("upvoted");
+        $(this).css("background-color", "#f43535");
+        var upvote = td.find('.glyphicon-plus');
+        $(upvote).css("background-color", "transparent");
+      }
+
+      else {
+        var number = parseInt(text, 10) - 1;
+        thisCount.html(number);
+        $(this).css("background-color", "#f43535");
+      }
+
+      $(td).toggleClass("downvoted");
     });
 
 

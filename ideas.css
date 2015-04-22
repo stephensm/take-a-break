@@ -6,6 +6,11 @@ td {
     overflow: hidden;
 }
 
+.vote {
+    text-align: center;
+    vertical-align: middle;
+}
+
 #ideasTable {
     table-layout: fixed;
 }
@@ -31,4 +36,20 @@ td {
     margin: 0;
     padding: 0;
     overflow: auto;
+}
+
+.glyphicon-plus {
+    float: right;
+}
+
+.glyphicon-minus {
+    float: left;
+}
+
+.glyphicon-plus:hover { 
+    background-color: #009647; 
+}
+
+.glyphicon-minus:hover { 
+    background-color: #f43535;
 }
