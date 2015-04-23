@@ -8,9 +8,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
 	
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="tab.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
@@ -68,8 +69,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 jumbotron hero-spacer">
-                    <p id="no-events">You do not have any events scheduled </p>
-                    <div id='event' style="display: none;">
+                    <div id='event'>
                         <h2>Event Information</h2>
                         <form>
                             <div class="form-inline">
@@ -138,9 +138,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <p><button type="button" id="make-event" class="btn btn-primary btn-lg" onClick='showEvent()'>Make A Break</button></p>
-                </div>
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 body {
-        padding-top: 70px;
-       }
+    padding-top: 70px;
+}
+
 .studwrap ol{
     list-style: none;
     padding-left: 0px;
@@ -22,6 +23,12 @@ body {
     display: block;
 }
 
+#myModal table{
+	width: 100%;
+	display: inline-block;
+    overflow: scroll;
+}
+
 .modal-body .right{
     background-color: green !important;
 	width: 100%;
@@ -31,4 +38,16 @@ body {
 	background-color: red;
 	z-index: 1000000;
 	width: 100%;
+}
+
+.available-time{
+	color: white;
+    background-color: #006600;
+    border: solid white;
+}
+
+.unavailable-time{
+	color: white;
+    background-color: #990000;
+    border: solid white;
 }

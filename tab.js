@@ -1,5 +1,9 @@
  var i=1;
+
 var allergies=[];
+
+var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
+
 $( document ).ready(function() {
 	if(getUrlParameter('event')){
 		showEvent();
@@ -32,10 +36,13 @@ $( document ).ready(function() {
 	}
 	$('#datetimepicker1').datepicker({    
 		autoclose: true,
-    	todayHighlight: true});
+    	todayHighlight: true
     });
-	
-	
+
+    
+    // Autocomplete stuff
+   $('#break-name').autocomplete('option', 'source', ideas);
+});
 
 function deleteRow(e) {
 	$('#delete_row'+e).parent().parent().remove();
@@ -44,12 +51,12 @@ function checkRow(e){
 	var check=$('#check_row'+e);
 	var row=check.parent().parent();
 	row.remove();
-	if(check.css("color")==="green"){
-		check.css("color","black");
+	if(check.css("color")==="rgb(0, 200, 0)"){
 		$('#to-do > tbody').prepend(row);
+		$('#check_row'+e).css("color","black");
 	}
 	else{
-	check.css("color","green");
+	check.css("color","rgb(0, 200, 0)");
 	var table =$("#to-do");
 	table.append(row);
 	}
@@ -74,10 +81,24 @@ function addRow(item){
 	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md'/>";
   	i++;
 }
+
+var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
 function suggestIdea(){
 	var title=document.getElementById('break-name').value.toLowerCase();
-	if(title.indexOf("ice cream")>-1){
+	if (title.indexOf("ice cream")>-1){
 		makeIce();
+	} else if (title.indexOf("mario kart")>-1){
+		makeMario();
+	} else if (title.indexOf("bubble tea")>-1){
+		makeTea();
+	} else if (title.indexOf("sushi break")>-1){
+		makeSushi();
+	} else if (title.indexOf("cannolis")>-1){
+		makeCannolies();
+	} else if (title.indexOf("donuts")>-1){
+		makeDonuts();
+	} else if (title.indexOf("bubble party")>-1){
+		makeBubbles();
 	}
 }
 function changeAllergies(){
@@ -143,6 +164,8 @@ function makeCannolies(){
 		addRow("Plates");
 		addRow("Cannolies");
 		addRow("Milk");
+		allergies=["Vegan","Dairy"];
+		changeAllergies();
 
 }
 function makeSushi(){

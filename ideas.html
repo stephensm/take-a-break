@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Ideas - Take a Break</title>
+    <title>Take a Break</title>
     <link type="text/css" href="ideas.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="ideas.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
 </head>
 
@@ -64,81 +65,81 @@
 		</span>
 		<span class="col-md-2"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addIdeaModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Add New Idea</span></button></span>
 	
-		<table class="table table-striped col-md-12" id="ideasTable">
+		<table class="table table-striped col-lg-12" id="ideasTable">
 		<thead>
 		  <tr>
-			<th class="col-md-2">Popularity Score</th>
+			<th class="col-md-1">Popularity</th>
 			<th class="col-md-2">Title</th>
 			<th class="col-md-1">Author</th>
 			<th class="col-md-2">Date Added</th>
-			<th class="col-md-4">Description</th>
+			<th class="col-md-5">Description</th>
 			<th class="col-md-1"></th>
 		  </tr>
 		</thead>
 		<tbody>
       <tr>
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 16 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">16</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Mario Kart</td>
         <td>GRTim</td>
         <td>March 30, 2015</td>
         <td>Eat food and play Mario Kart all day</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=mario'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=mario'">Create</button></td>
       </tr>
 
       <tr>
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 12 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">12</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Sushi Break</td>
         <td>Bob</td>
         <td>April 3, 2015</td>
         <td>Eat a lot of sushi. Raw fish ftw</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=sushi'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=sushi'">Create</button></td>
       </tr>
 
       <tr>
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 10 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">10</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Cannolis</td>
         <td>Sarah</td>
         <td>April 8, 2015</td>
         <td>Need I say any more?</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=cannolies'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=cannolies'">Create</button></td>
       </tr>
 
       <tr>
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 10 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">10</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Donuts</td>
         <td>Maria</td>
         <td>April 10, 2015</td>
         <td>Eat donuts from Dunkin. Make sure to ask students what they want and track allergies!</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=donuts'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=donuts'">Create</button></td>
       </tr>
 
       <tr>
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 6 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">6</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Bubble Tea</td>
         <td>ABC</td>
         <td>April 4, 2015</td>
         <td>Order different types of bubble tea</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=tea'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=tea'">Create</button></td>
       </tr>
 
       <tr class="hid">
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
-            <span id="count"> 5 </span>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+            <span id="count">5</span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
         <td>Random Event</td>
@@ -148,7 +149,7 @@
       </tr>
 
       <tr class="hid">
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
             <span id="count"> 5 </span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
@@ -156,11 +157,11 @@
         <td>Steph</td>
         <td>April 9, 2015</td>
         <td>Eat froyo</td>
-		<td><button class="btn btn-sm" OnClick=" location.href='./tab.html?event=froyo'">Make Event</button></td>
+		<td><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
       </tr>
 
       <tr class="hid">
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
             <span id="count"> 4 </span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
@@ -171,7 +172,7 @@
       </tr>
 
       <tr class="hid">
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
             <span id="count"> 1 </span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
@@ -182,7 +183,7 @@
       </tr>
 
       <tr class="hid">
-        <td><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
+        <td class = "vote"><button class="glyphicon glyphicon-minus" aria-hidden="true"></button>
             <span id="count"> 0 </span>
             <button class="glyphicon glyphicon-plus" aria-hidden="true"></button>
         </td>
