@@ -15,6 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.7/jquery.devbridge-autocomplete.min.js"></script>
     
 
 
@@ -94,11 +95,15 @@
                                     </div>
                                     <div class='col-md-5'>
                                         <label for="dropdownTime" class="control-label">Time:</label>
-                                        <select name="time" id="dropdownTime">
-                                            <option>9pm  (40 students)</option>
-                                            <option>11pm (32 students)</option>
-                                            <option>5pm  (15 students)</option>
-                                            <option>6pm  (15 students)</option>
+                                        <select name="time" id="dropdownTime" onchange="changeAllergies()">
+                                            <option value="40">9pm  (40 students)</option>
+                                            <option value="32">11pm (32 students)</option>
+                                            <option value="15">5pm  (15 students)</option>
+                                            <option value="15">6pm  (15 students)</option>
+											<option value="10">10pm (10 students)</option>
+                                            <option value="8">8pm (8 students)</option>
+                                            <option value="5">7pm  (5 students)</option>
+                                            <option value="1">4pm  (1 student)</option>
                                         </select>					
                                     </div>
                                 </div>
@@ -108,6 +113,7 @@
                                                 <table class="table table-bordered table-hover" id="to-do">
                                                     <thead>
                                                         <tr>
+															<th></th>
                                                             <th></th>
                                                             <th class="text-center">Item</th>
                                                             <th class="text-center">Description</th>
@@ -115,6 +121,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr id='addr0'>
+															<td><span id='check_row0'  class='glyphicon glyphicon-check' onclick='checkRow(0)' value='0' aria-hidden='true'/></td>
                                                             <td><span id='delete_row0'  class='glyphicon glyphicon-remove' onclick='deleteRow(0)' value='0' aria-hidden='true'/></td>
                                                             <td><input type="text" name='item0'  placeholder='Item name' class="form-control"/></td>
                                                             <td><input type="text" name='description0'  placeholder='Enter a description' class="form-control"/></td>
