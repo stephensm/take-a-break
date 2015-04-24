@@ -1,14 +1,13 @@
- var i=1;
-
+var i=1;
+var data ={"edited":undefined,"name":undefined,"date":undefined, "time":undefined,"items":undefined, "desc":undefined,"allergies":undefined};
 var allergies=[];
+var todo=[];
 
 var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
 
 $( document ).ready(function() {
 	if(getUrlParameter('event')){
-		showEvent();
 		var event=getUrlParameter('event');
-		console.log(event);
 		if (event==='mario'){
 			makeMario();
 		}
@@ -34,11 +33,13 @@ $( document ).ready(function() {
 			makeFroyo();
 		}
 	}
+	else if(localStorage.data){
+		loadSavedEvent();
+	}
 	$('#datetimepicker1').datepicker({    
 		autoclose: true,
     	todayHighlight: true
     });
-
     
     // Autocomplete stuff
    $('#break-name').autocomplete('option', 'source', ideas);
@@ -63,11 +64,13 @@ function checkRow(e){
 	
 	
 }
-function addRow(item){
+function addRow(item,desc){
 	if(typeof item === "undefined") {
        item = "";
     }
-
+		if(typeof desc === "undefined") {
+       desc = "";
+    }
 	var table = document.getElementById("to-do");
 	var row = table.insertRow(1);
 	var cell1 = row.insertCell(0);
@@ -78,7 +81,7 @@ function addRow(item){
 	
 	cell2.innerHTML = "<span id='delete_row"+i+"'  class='glyphicon glyphicon-remove' aria-hidden='true' onclick='deleteRow("+i+")'/>";
 	cell3.innerHTML = "<input name='item"+i+"' type='text'  class='form-control input-md' value='"+item+"'/>";
-	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md'/>";
+	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md'/"+desc+">";
   	i++;
 }
 
@@ -109,13 +112,13 @@ function changeAllergies(){
 			var li1 = document.createElement("li");
 			li1.className="list-group-item";
 			var x=Math.floor(Math.random() * 6) ;
-		
 			var text1 = document.createTextNode(allergies[allergy]+ "("+x+"/"+total+")");
 			li1.appendChild(text1);
 			ul.appendChild(li1);
 		}
 }
 function getRandomIdea(){
+	change();
 	var event=Math.floor(Math.random() * 8) ;
 	if (event===0){
 			makeMario();
@@ -135,11 +138,49 @@ function getRandomIdea(){
 			makeFroyo();
 		}
 }
-function showEvent(){
-	$('#make-event').hide();
-	document.getElementById("event").style.display = "inherit";
-	document.getElementById("no-events").remove();
-	
+function loadSavedEvent(){
+	data=JSON.parse(localStorage.data);
+	document.getElementById('break-name').value=data["name"];
+	$("#to-do").find("tr:gt(0)").remove();
+	$("#allergies-list").empty();
+	allergies=data["allergies"]
+	changeAllergies();
+	$("#dropdownTime").val(data["time"]);
+	for( i in data["items"]){
+		if(data["items"][i]){
+			addRow(data["items"][i],data["desc"][i]);
+		}
+	}
+	$('#datetimepicker1').datepicker('setDate',data["date"]);
+	$("#save").prop("disabled",true);
+	$("#revert").prop("disabled",true);
+}
+function change(){
+	$("#save").removeAttr('disabled');
+	$("#revert").removeAttr('disabled');
+}
+function saveEvent(){
+	$("#save").prop("disabled",true);
+	$("#revert").prop("disabled",true);
+	data["edited"]=true;
+	data["name"]=document.getElementById('break-name').value;
+	data["allergies"]=allergies;
+	data["date"]=$('#datetimepicker1').datepicker('getDate');
+	data["time"]=$("#dropdownTime").val();
+	var item=[];
+	var desc=[];
+	var list=$("#to-do").find("input,textarea");
+	list.each(function(i){
+        if (i %2 == 0){
+			item.push(list[i].value);
+		}
+		else{
+			desc.push(list[i].value);
+		}
+    });
+	data["items"]=item;
+	data["desc"]=desc;
+	localStorage.data=JSON.stringify(data);
 }
 function makeBubbles(){
 		$("#allergies-list").empty();

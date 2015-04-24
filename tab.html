@@ -71,15 +71,15 @@
                 <div class="col-md-12 jumbotron hero-spacer">
                     <div id='event'>
                         <h2>Event Information</h2>
-                        <form>
+                        <form onchange="change()">
                             <div class="form-inline">
-                                <div class="row">
+                                <div class="row" >
                                     <span class="col-md-7">
                                         <label for="break-name" class="control-label">Title:</label>
                                         <input type="text" class="form-control" onfocusout="suggestIdea()" id="break-name"/>
                                     </span>
                                     <span class="col-md-5">
-                                        <button type="button" class="btn btn-primary" id="random_idea" onclick="getRandomIdea()">I'm Feeling Lazy</button>
+                                        <button type="button" class="btn btn-primary" id="random_idea" onclick="getRandomIdea()">Random Idea</button>
                                         <button type="button" class="btn btn-primary" id="random_idea" onclick="clearForm()">Clear</button>
                                     </span>
                                 </div>
@@ -138,6 +138,8 @@
                                 </div>
                             </div>
                         </form>
+						<button type="button" class="btn btn-left" id="revert" onclick="loadSavedEvent()">Revert Changes</button>
+						<button type="button" class="btn btn-right" id="save" onclick="saveEvent()">Save</button>
             </div>
         </div>
 
