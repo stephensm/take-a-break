@@ -12,7 +12,6 @@
 
 	
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="tab.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
@@ -26,8 +25,9 @@
                 parentElement.append(" <span class='glyphicon glyphicon-pencil edit' aria-hidden='true'></span>");
             }
 
-            $(".edit").click(function(){
+            $(".studwrap").on('click', ".edit",function(){
                 submitText("#newtext"); //prevent two elements from simultaneously having this id
+                console.log("hello");
                 $(this).parent().html("<input autofocus id='newtext'>");
             });
 
@@ -89,32 +89,34 @@
                 <div class="col-md-12">
                     <h1>Students</h1>
                     <br />
-                    <div class="lead">Allergies</div>
+                    <br />
+                    <div class="lead"><b>Allergies</b></div>
                     <div class="row">
-                      <div class="col-md-4">Nuts (17 students)</div>
-                      <div class="col-md-4">Vegetarian (13 students)</div>
-                      <div class="col-md-4">Dairy (12 students)</div>
+                      <div class="col-md-3">Nuts (17 students)</div>
+                      <div class="col-md-3">Vegetarian (13 students)</div>
+                      <div class="col-md-3">Dairy (12 students)</div>
+                      <div class="col-md-3">Shellfish (6 students)</div>
                     </div>
                     <div class="row">
-                      <div class="col-md-4">Shellfish (6 students)</div>
-                      <div class="col-md-4">Gluten (5 students)</div>
-                      <div class="col-md-4">Vegan (3 students)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">Eggs (1 student)</div>
+                      <div class="col-md-3">Gluten (5 students)</div>
+                      <div class="col-md-3">Vegan (3 students)</div>
+                      <div class="col-md-3">Eggs (1 student)</div>
                     </div>
                     <br />
-                    <div class="lead">Best Times</div>
+                    <br />
+                    <div class="lead"><b>Best Times</b></div>
                     <div class="row">
-                      <div class="col-md-4">Tuesdays at 9pm (40 students)</div>
-                      <div class="col-md-4">Wednesdays at 11pm (32 students)</div>
-                      <div class="col-md-4">Friday at 5pm (29 students)</div>
+                      <div class="col-md-3">Tuesdays at 9pm (40 students)</div>
+                      <div class="col-md-3">Wednesdays at 11pm (32 students)</div>
+                      <div class="col-md-3">Fridays at 5pm (29 students)</div>
+                      <div class="col-md-3">Saturdays at 12pm (25 students)</div>
                     </div>
                     <div class="row">
-                      <div class="col-md-4">Saturday at 12pm (25 students)</div>
+                        <div class="col-md-3">Sundays at 1pm (22 students)</div>
                     </div>
                     <br />
-                    <div class="lead">Students (45)</div>
+                    <br />
+                    <div class="lead"><b>Students by Individual (45)</b></div>
                     <div class="table-responsive studwrap">
                         <table class="table table-striped">
                             <tr>
