@@ -23,6 +23,14 @@ td {
     text-align: center;
 }
 
+#addIdeaButton {
+    float: right;
+}
+
+#searchLabel #searchBox {
+    float: left;
+}
+
 .table-striped {
     max-height: 300px;
     overflow: auto;
@@ -52,4 +60,17 @@ td {
 
 .glyphicon-minus:hover { 
     background-color: #f43535;
+}
+
+.glyphicon-trash:hover { 
+    background-color: #f43535;
+}
+
+.glyphicon-pencil:hover { 
+    background-color: aqua;
+}
+
+.glyphicon-trash {
+    margin-left: 15px;
+    margin-right: 15px;
 }
