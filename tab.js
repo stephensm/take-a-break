@@ -1,5 +1,5 @@
 var i=1;
-var data ={"edited":undefined,"name":undefined,"date":undefined, "time":undefined,"items":undefined, "desc":undefined,"allergies":undefined};
+var data ={"edited":undefined,"name":undefined,"date":undefined, "time":undefined,"items":undefined, "desc":undefined,"cost":undefined,"allergies":undefined,"toatl":undefined};
 var allergies=[];
 var todo=[];
 
@@ -47,6 +47,7 @@ $( document ).ready(function() {
 
 function deleteRow(e) {
 	$('#delete_row'+e).parent().parent().remove();
+	change();
 }
 function checkRow(e){
 	var check=$('#check_row'+e);
@@ -64,25 +65,32 @@ function checkRow(e){
 	
 	
 }
-function addRow(item,desc){
+function addRow(item,desc,cost){
 	if(typeof item === "undefined") {
        item = "";
     }
-		if(typeof desc === "undefined") {
+	if(typeof desc === "undefined") {
        desc = "";
     }
+	if(typeof cost === "undefined") {
+       cost = "0";
+    }
+	console.log(cost);
 	var table = document.getElementById("to-do");
 	var row = table.insertRow(1);
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	var cell3 = row.insertCell(2);
 	var cell4 = row.insertCell(3);
+	var cell5= row.insertCell(4);
 	cell1.innerHTML = "<span id='check_row"+i+"'  class='glyphicon glyphicon-check' aria-hidden='true' onclick='checkRow("+i+")'/>";
 	
 	cell2.innerHTML = "<span id='delete_row"+i+"'  class='glyphicon glyphicon-remove' aria-hidden='true' onclick='deleteRow("+i+")'/>";
-	cell3.innerHTML = "<input name='item"+i+"' type='text'  class='form-control input-md' value='"+item+"'/>";
-	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md'/"+desc+">";
+	cell3.innerHTML = "<input name='item"+i+"' type='text'  class='form-control input-sm' value='"+item+"'/>";
+	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md' value='"+desc+"'/>";
+	cell5.innerHTML = "<input name='cost"+i+"' type='number' min='0.00' step='0.01' max='1000' class='form-control input-sm 'value='"+cost+"'/>";
   	i++;
+	change();
 }
 
 var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
@@ -148,20 +156,41 @@ function loadSavedEvent(){
 	$("#dropdownTime").val(data["time"]);
 	for( i in data["items"]){
 		if(data["items"][i]){
-			addRow(data["items"][i],data["desc"][i]);
+			addRow(data["items"][i],data["desc"][i],data["cost"][i]);
 		}
 	}
 	$('#datetimepicker1').datepicker('setDate',data["date"]);
 	$("#save").prop("disabled",true);
-	$("#revert").prop("disabled",true);
+	$("#save").text("Changes Saved!");
+	$("#save").addClass('btn-success');
+	document.getElementById("revert").style.display = "none";
+	getNewBudget();
 }
 function change(){
+	getNewBudget();
 	$("#save").removeAttr('disabled');
-	$("#revert").removeAttr('disabled');
+	$("#save").removeClass('btn-success');
+	$("#save").text("Save Changes");
+	document.getElementById("revert").style.display = "inherit";
+}
+function getNewBudget(){
+	var list=$("#to-do").find("input");
+	var total=0.00;
+	list.each(function(i){
+        if (i %3 == 2){
+			total+=Number(list[i].value);
+		}
+    });
+	$("#total").text(total);
+	var remaining=parseFloat(246.00-total).toFixed(2);;
+	$("#remaining").text(remaining);
+	
 }
 function saveEvent(){
 	$("#save").prop("disabled",true);
-	$("#revert").prop("disabled",true);
+	$("#save").addClass('btn-success');
+	$("#save").text("Changes Saved!");
+	document.getElementById("revert").style.display = "none";
 	data["edited"]=true;
 	data["name"]=document.getElementById('break-name').value;
 	data["allergies"]=allergies;
@@ -169,17 +198,26 @@ function saveEvent(){
 	data["time"]=$("#dropdownTime").val();
 	var item=[];
 	var desc=[];
-	var list=$("#to-do").find("input,textarea");
+	var cost=[];
+	var total=0;
+	var list=$("#to-do").find("input");
 	list.each(function(i){
-        if (i %2 == 0){
+        if (i %3 == 0){
 			item.push(list[i].value);
 		}
-		else{
+		else if (i%3 == 1){
 			desc.push(list[i].value);
+		}
+		else{
+			cost.push(list[i].value);
+			total+=Number(list[i].value);
 		}
     });
 	data["items"]=item;
 	data["desc"]=desc;
+	data["cost"]=cost;
+	console.log(total);
+	data["total"]=total;
 	localStorage.data=JSON.stringify(data);
 }
 function makeBubbles(){
@@ -226,6 +264,7 @@ function makeSushi(){
 function makeIce(){
 		$("#allergies-list").empty();
 		$("#to-do").find("tr:gt(0)").remove();
+	document.getElementById('break-name').value="Ice cream";
 		addRow("Ice cream");
 		addRow("Cherries");
 		addRow("Bowls");
@@ -237,6 +276,7 @@ function makeIce(){
 	}
 function makeFroyo(){
 		$("#allergies-list").empty();
+	document.getElementById('break-name').value="Froyo";
 		$("#to-do").find("tr:gt(0)").remove();
 		addRow("Froyo");
 		addRow("Cherries");
@@ -272,6 +312,10 @@ function clearForm(){
 	document.getElementById('break-name').value="";
 	$("#allergies-list").empty();
 	addRow();
+	change();
+}
+function printList(){
+	$('#to-do').printElement({printMode:'popup'});
 }
 
 // source http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
