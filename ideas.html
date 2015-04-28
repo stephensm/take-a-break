@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 
-<!-- TODO: change colors on hover of clicked voting buttons; "creating" study breaks; dynamic re-ordering -->
+<!-- TODO:
+  - fix bug: change colors on hover of clicked voting buttons
+  - fix bug: editing/deleting can affect multiple rows
+  - "creating" study breaks
+  - dynamic re-ordering
+-->
 
 <html>
 <head>
@@ -88,7 +93,7 @@
         <td>GRTim</td>
         <td>March 30, 2015</td>
         <td>Eat food and play Mario Kart all day</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=mario'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=mario'">Create</button></td>
       </tr>
 
       <tr>
@@ -100,7 +105,7 @@
         <td>Bob</td>
         <td>April 3, 2015</td>
         <td>Eat a lot of sushi. Raw fish ftw</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=sushi'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=sushi'">Create</button></td>
       </tr>
 
       <tr>
@@ -112,7 +117,7 @@
         <td>Sarah</td>
         <td>April 8, 2015</td>
         <td>Need I say any more?</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=cannolies'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=cannolies'">Create</button></td>
       </tr>
 
       <tr>
@@ -124,7 +129,7 @@
         <td>Maria</td>
         <td>April 10, 2015</td>
         <td>Eat donuts from Dunkin. Make sure to ask students what they want and track allergies!</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=donuts'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=donuts'">Create</button></td>
       </tr>
 
       <tr>
@@ -136,7 +141,7 @@
         <td>ABC</td>
         <td>April 4, 2015</td>
         <td>Order different types of bubble tea</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=tea'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=tea'">Create</button></td>
       </tr>
 
       <tr>
@@ -148,7 +153,7 @@
         <td>Bob</td>
         <td>April 7, 2015</td>
         <td>Eat random stuff</td>
-        <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
+        <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
       </tr>
 
       <tr>
@@ -160,7 +165,7 @@
         <td>Steph</td>
         <td>April 9, 2015</td>
         <td>Eat froyo</td>
-		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
+		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
       </tr>
 
       <tr>
@@ -172,7 +177,7 @@
         <td>GRTim</td>
         <td>April 3, 2015</td>
         <td>I'll bring in random food and you decide whether or not to hate me</td>
-        <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
+        <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-primary" OnClick=" location.href='./tab.html?event=froyo'">Create</button></td>
       </tr>
 
     </tbody>
@@ -251,13 +256,13 @@
 
       <div class="modal-body">
         <div style="margin-bottom:20px">
-        <label for="titleBox">Title: </label>
-        <input type="text" id="titleBox">
+        <label for="editTitleBox">Title: </label>
+        <input type="text" id="editTitleBox">
         </div>
         
         <div>
-        <label for="descriptionBox">Description: </label>
-        <textarea rows="5" cols="70" id="descriptionBox"></textarea>
+        <label for="editDescriptionBox">Description: </label>
+        <textarea rows="5" cols="70" id="editDescriptionBox"></textarea>
         </div>
       </div>
 

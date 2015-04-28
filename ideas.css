@@ -62,7 +62,7 @@ td {
     background-color: #f43535;
 }
 
-.glyphicon-trash:hover { 
+.glyphicon-remove:hover { 
     background-color: #f43535;
 }
 
@@ -70,7 +70,7 @@ td {
     background-color: aqua;
 }
 
-.glyphicon-trash {
+.glyphicon-remove {
     margin-left: 15px;
     margin-right: 15px;
 }

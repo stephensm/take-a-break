@@ -13,11 +13,6 @@ $(document).ready(function(){
       }
     });
 
-    // Tooltips
-    $(".glyphicon-trash").tooltip({
-      content: "Delete"
-    });
-
     // Voting system - restricted to one vote per user
     // Upvotes
     $(".glyphicon-plus").click(function(){
@@ -49,11 +44,13 @@ $(document).ready(function(){
 
       $(td).effect("highlight", {}, 500);
       $(td).toggleClass("upvoted");
+      sortIdeas()
     });
 
     // Downvotes
     $(".glyphicon-minus").click(function(){
       var td = $(this).parent();
+      console.log(td);
       var thisCount = td.find('#count');
       var text = thisCount.text();
 
@@ -81,6 +78,7 @@ $(document).ready(function(){
 
       $(td).effect("highlight", {}, 500);
       $(td).toggleClass("downvoted");
+      sortIdeas()
     });
 
 
@@ -103,7 +101,7 @@ $(document).ready(function(){
       cell4.innerHTML = d.toDateString();
       cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
       cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
-      '<button class="glyphicon glyphicon-trash btn-sm" aria-hidden="true"></button>' +
+      '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
       '<button class="btn btn-primary" OnClick=" location.href=\"./tab.html?event=donuts\"">Create</button>';
 
       document.getElementById('titleBox').value = '';
@@ -114,7 +112,7 @@ $(document).ready(function(){
 
 
     // Delete an idea from the table
-    $(".glyphicon-trash").click(function() {
+    $(".glyphicon-remove").click(function() {
       var row = $(this).parent().parent();
       $('#deleteIdeaModal').modal('toggle');    // launch confimation modal
 
@@ -131,12 +129,22 @@ $(document).ready(function(){
     // BUG TODO: multiple highlights
     $(".glyphicon-pencil").click(function() {
       var row = $(this).parent().parent();
+      //console.log(document.getElementById("ideasTable").rows[1].cells[1]);
       $('#editIdeaModal').modal('toggle');    // launch modal
+      var cell1 = row[0].cells[1];
+      var cell4 = row[0].cells[4];
+
+      document.getElementById('editTitleBox').value = cell1.innerHTML;
+      var cellHtml = cell4.innerHTML;
+      document.getElementById('editDescriptionBox').value = cellHtml.replace(/<[^>]*>/g, "");
 
       $("#editIdea").click(function() {
         $(row).effect("highlight", {}, 3000);
-        
+        cell1.innerHTML = document.getElementById('editTitleBox').value;
+        cell4.innerHTML = '<div class=scrollable>' + document.getElementById('editDescriptionBox').value + '</div>';
 
+        //document.getElementById('editTitleBox').value = '';
+        //document.getElementById('editDescriptionBox').value = '';
       });
     });
 
@@ -154,4 +162,24 @@ $(document).ready(function(){
           $(value).css("background-color", "white");
       });
     });
+
+
+    // Sort ideas by popularity
+    function sortIdeas() {
+      var tableData = document.getElementById("ideasTable").getElementsByTagName('tbody').item(0);
+
+      // Read table row nodes
+      var rowData = tableData.getElementsByTagName('tr');
+
+      for(var i = 0; i < rowData.length - 1; i++){
+        for(var j = 0; j < rowData.length - (i + 1); j++) {
+          //console.log(rowData.item(j).getElementsByTagName('td')[0].find('#count'));
+          var td1 = $(rowData.item(j).getElementsByTagName('td').item(0));
+          var td2 = $(rowData.item(j+1).getElementsByTagName('td').item(0));
+          //console.log(td);
+          if(parseInt(td1.find('#count').text()) < parseInt(td2.find('#count').text()))
+            tableData.insertBefore(rowData.item(j+1),rowData.item(j));
+        }
+      }
+    }
 });
