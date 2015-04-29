@@ -41,8 +41,27 @@ $( document ).ready(function() {
     	todayHighlight: true
     });
     
-    // Autocomplete stuff
-   $('#break-name').autocomplete('option', 'source', ideas);
+   // Autocomplete stuff
+    $('#break-name').autocomplete({
+        minLength: 0,
+        select: function(e, ui) {
+            $('#break-name').val(ui.item.value);
+            if (!e.keyCode || e.keyCode != 13) {
+                suggestIdea();
+            }
+            return false;
+        },
+    })
+    .keydown(function(e) {
+        if (e.keyCode == 13) {
+            suggestIdea();
+            return false;
+        }
+    })
+    .focus(function(e) {
+        $('#break-name').autocomplete('search', '');
+    });
+    $('#break-name').autocomplete('option', 'source', ideas);
 });
 
 function deleteRow(e) {
@@ -75,7 +94,6 @@ function addRow(item,desc,cost){
 	if(typeof cost === "undefined") {
        cost = "";
     }
-	console.log(cost);
 	var table = document.getElementById("to-do");
 	var row = table.insertRow(1);
 	var cell1 = row.insertCell(0);
