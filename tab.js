@@ -1,5 +1,8 @@
 var i=1;
-var data ={"edited":undefined,"name":undefined,"date":undefined, "time":undefined,"items":undefined, "desc":undefined,"cost":undefined,"allergies":undefined,"toatl":undefined};
+var loc;
+var data ={"name":'',"date":undefined, "time":40,"items":undefined, "desc":undefined,"cost":undefined,"allergies":undefined,"toatl":undefined};
+
+var events=[];
 var allergies=[];
 var todo=[];
 
@@ -7,6 +10,7 @@ var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'I
 
 $( document ).ready(function() {
 	if(getUrlParameter('event')){
+		showEvent();
 		var event=getUrlParameter('event');
 		if (event==='mario'){
 			makeMario();
@@ -33,9 +37,17 @@ $( document ).ready(function() {
 			makeFroyo();
 		}
 	}
-	else if(localStorage.data){
-		loadSavedEvent();
+	if(localStorage.getItem("events") !== null){
+		events=JSON.parse(localStorage.getItem("events"));
+		changeEvents();
+		if(events.length==0){
+			 document.getElementById("start").style.display = "inherit";
+		 }
+		else{
+			document.getElementById("start").style.display = "none";
+		}
 	}
+
 	$('#datetimepicker1').datepicker({    
 		autoclose: true,
     	todayHighlight: true
@@ -143,6 +155,23 @@ function changeAllergies(){
 			ul.appendChild(li1);
 		}
 }
+function changeEvents(){
+		$("#event-list").empty();
+		var ul = document.getElementById("event-list");
+		for(k in events){
+			idea=events[k];
+			var li1 = document.createElement("li");
+			li1.className="list-group-item";
+			var createA = document.createElement('a');
+			var createAText = document.createTextNode(idea["name"]);
+			createA.setAttribute('href', "#");
+			createA.setAttribute('onclick', "loadSavedEvent("+k+")");
+			createA.appendChild(createAText);
+			li1.appendChild(createA);
+			ul.appendChild(li1);
+		}
+	localStorage.events=JSON.stringify(events);
+}
 function getRandomIdea(){
 	change();
 	var event=Math.floor(Math.random() * 8) ;
@@ -164,22 +193,33 @@ function getRandomIdea(){
 			makeFroyo();
 		}
 }
-function loadSavedEvent(){
-	data=JSON.parse(localStorage.data);
+function loadSavedEvent(k){
+	showEvent();
+	if(k === undefined){
+		data=events[loc]
+	}
+	else if(k === 'new'){
+		data={"name":'',"date":undefined, "time":40,"items":undefined, "desc":undefined,"cost":undefined,"allergies":undefined,"toatl":undefined};
+		loc=events.length;
+	}
+	else{
+		data=events[k];
+		loc=k;
+	}
 	document.getElementById('break-name').value=data["name"];
 	$("#to-do").find("tr:gt(0)").remove();
 	$("#allergies-list").empty();
 	allergies=data["allergies"]
 	changeAllergies();
 	$("#dropdownTime").val(data["time"]);
-	for( i in data["items"]){
-		if(data["items"][i]){
-			addRow(data["items"][i],data["desc"][i],data["cost"][i]);
+	for( l in data["items"]){
+		if(data["items"][l]){
+			addRow(data["items"][l],data["desc"][l],data["cost"][l]);
 		}
 	}
 	$('#datetimepicker1').datepicker('setDate',data["date"]);
 	$("#save").prop("disabled",true);
-	$("#save").text("Changes Saved!");
+	$("#save").text("Event Saved!");
 	$("#save").addClass('btn-success');
 	document.getElementById("revert").style.display = "none";
 	getNewBudget();
@@ -188,7 +228,7 @@ function change(){
 	getNewBudget();
 	$("#save").removeAttr('disabled');
 	$("#save").removeClass('btn-success');
-	$("#save").text("Save Changes");
+	$("#save").text("Save Event");
 	document.getElementById("revert").style.display = "inherit";
 }
 function getNewBudget(){
@@ -207,9 +247,8 @@ function getNewBudget(){
 function saveEvent(){
 	$("#save").prop("disabled",true);
 	$("#save").addClass('btn-success');
-	$("#save").text("Changes Saved!");
+	$("#save").text("Event Saved!");
 	document.getElementById("revert").style.display = "none";
-	data["edited"]=true;
 	data["name"]=document.getElementById('break-name').value;
 	data["allergies"]=allergies;
 	data["date"]=$('#datetimepicker1').datepicker('getDate');
@@ -234,9 +273,16 @@ function saveEvent(){
 	data["items"]=item;
 	data["desc"]=desc;
 	data["cost"]=cost;
-	console.log(total);
 	data["total"]=total;
-	localStorage.data=JSON.stringify(data);
+	if(!events[loc]){
+		events.push(data);
+		loc=events.length-1;
+	}
+	else{
+		events[loc]=data;
+	}
+	changeEvents();
+	localStorage.events=JSON.stringify(events);	
 }
 function makeBubbles(){
 		$("#allergies-list").empty();
@@ -341,10 +387,43 @@ function clearForm(){
 function printList(){
 	$('#to-do').printElement({printMode:'popup'});
 }
+function cancelEvent(){
+	 saveEvent();
+	 events.splice(loc, 1);
+	 loc=undefined;
+	 document.getElementById("event").style.display = "none";
+	 document.getElementById("no-event").style.display = "inherit";
+	 if(events.length==0){
+		 document.getElementById("start").style.display = "inherit";
+	 }
+	else{
+		document.getElementById("start").style.display = "none";
+	}
+	changeEvents();
+	
+}
+function newEvent(){
+	loadSavedEvent('new');
+	addRow();
+}
+function showEvent(){
+	document.getElementById("event").style.display = "inherit";
+	document.getElementById("no-event").style.display = "none";
+}
+function makeEvent(){
+	if(!events[loc]){
+		events.push(data);	
+		loc=events.length-1;
+	}
+	else{
+		events[loc]=data;
+	}
+	changeEvents();
+	
 
+};
 // source http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
-function getUrlParameter(sParam)
-{
+function getUrlParameter(sParam){
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++) 

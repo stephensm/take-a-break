@@ -15,6 +15,9 @@ height:34px;
 #random_idea{
 	float:right !important;
 }
+#new{
+	float:right !important;
+}
 #save{
 	margin-top:10px;
 }

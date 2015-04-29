@@ -61,9 +61,20 @@
 
     <!-- Intro Section -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 jumbotron hero-spacer">
-                    <div id='event'>
+			<div class="row">
+                <div class="col-md-12">
+                    <h1>Upcoming Events</h1>
+                </div>
+            </div>
+            <div class="row">	 
+            		<ul class="list-group" id="event-list"></ul>
+			<div id='no-event'>
+				<p id='start'>You do not have any events scheduled </p>
+				<p><button type="button" id="make-event" class="btn btn-primary" onclick='showEvent()'>
+  new event
+</button></p></div>
+                <div class="col-md-12 jumbotron hero-spacer" id='event' style="display: none;"> 
+							
                         <h2>Event Information</h2>
                         <form onchange="change()">
                             <div class="form-inline">
@@ -144,14 +155,17 @@
 										
                                     </div>
 									<div class="row">
-									<span class='col-md-2'><button type="button"  class="btn btn-primary"  id="save" onclick="saveEvent()">Save Changes</button></span>
+									<span class='col-md-2'><button type="button"  class="btn btn-primary"  id="save" onclick="saveEvent()">Save Event</button></span>
 						
-						<span class='col-md-2'><button type="button"  class="btn btn-left" id="revert" onclick="loadSavedEvent()">Revert Changes</button></span>
+						<span class='col-md-2'><button type="button"  class="btn btn" id="revert" onclick="loadSavedEvent()">Revert Changes</button></span>
+										
 										</div>
                                 </div>
 								
                             </div>
-
+<span class='col-md-6'><button type="button"  class="btn btn-danger"  id="cancel" data-toggle="modal" data-target="#deleteModal">Cancel Event</button></span>
+							
+										<span class='col-md-6'><button type="button"  class="btn btn-primary"  id="new" onclick="newEvent()">New Event</button></span>
 
                         </form>
 					
@@ -160,6 +174,26 @@
             </div>
         </div>
 
+<!-- Modal: Delete confirmation -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteIdeaModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="deleteIdeaModalLabel" align="center">Cancel Event</h2>
+      </div>
+
+      <div class="modal-body" style="text-align:center">
+        Are you sure you want to cancel this event? This will delete any data associated with this event.
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="deleteIdea" data-dismiss="modal" onclick="cancelEvent()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
