@@ -20,5 +20,9 @@ body {
 
 #budgetlabel {
     text-align: center;
-    color: red;
+}
+
+#budgettotal {
+    text-align: center;
+    width: 80px;
 }

@@ -36,11 +36,18 @@ function getBestFit() {
     return newData;
 }
 
+function getBestUse() {
+    var data = getGraphData();
+    return newData = [data[0], [(new Date('5/23/2015')).getTime(), 0]];
+}
+
 $(function () {
 
+    /*
     hs.Expander.prototype.onMouseOut = function () {
         this.close();
     };
+    */
 
     // Get the CSV and create the chart
     //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
@@ -76,10 +83,6 @@ $(function () {
             showFirstLabel: false,
             min: 0,
             max: events[0]['Total']
-        },
-
-        legend: {
-            enabled: false
         },
         
         tooltip: { enabled: false },
@@ -132,11 +135,19 @@ $(function () {
                 enabled: false
             },
             zIndex: -1
+        }, {
+            name: 'Best Use',
+            data: getBestUse(),
+            lineWidth: 2,
+            marker: {
+                enabled: false
+            },
+            zIndex: -2
         }]
     });
     
     $('#budgetremaining').text(events[events.length - 1]['Total']);
-    $('#budgettotal').text(events[0]['Total']);
+    $('#budgettotal').val(events[0]['Total']);
     
     var sorterNames = ['nameSorter', 'dateSorter', 'costSorter', 'budgetSorter'];
     var fillInSorter = function(id) {
@@ -148,7 +159,9 @@ $(function () {
     for (var i = 0; i < sorterNames.length; i++) {
         fillInSorter(sorterNames[i]);
     }
-    
+
+    var sortWhich = 'dateSorter';
+    var sortUp = true;
     var sortEventsBy = function(which, up) {
         for (var i = 0; i < sorterNames.length; i++) {
             $('#' + sorterNames[i] + 'FilledTop').hide();
@@ -156,6 +169,8 @@ $(function () {
             $('#' + sorterNames[i] + 'UnfilledTop').show();
             $('#' + sorterNames[i] + 'UnfilledBottom').show();
         }
+        sortWhich = which;
+        sortUp = up;
         var dir = up ? 'Top' : 'Bottom';
         $('#' + which + 'Unfilled' + dir).hide();
         $('#' + which + 'Filled' + dir).show();
@@ -194,5 +209,13 @@ $(function () {
     $('.sorterBottom').click(function(e) {
         sortEventsBy($(this).parent().attr('id'), false);
     });
-    sortEventsBy('dateSorter', true);
+    $('.sorterLabel').click(function(e) {
+        var which = $(this).next().attr('id');
+        if (which == sortWhich) {
+            sortEventsBy(which, !sortUp);
+        } else {
+            sortEventsBy(which, true);
+        }
+    });
+    sortEventsBy(sortWhich, sortUp);
 });

@@ -65,7 +65,7 @@
             <div class="col-md-12">
                 <h1>Budget History</h1>
 
-                <div id="budgetlabel"><h2>$<span id="budgetremaining"></span> remaining out of $<span id="budgettotal"></span></h2></div>
+                <div id="budgetlabel"><h2>$<span id="budgetremaining"></span> remaining out of $<input type="text" id="budgettotal"></h2></div>
 
                 <div id="container" style="width: 95%; min-width: 310px; height: 500px; margin: 0 auto"></div>
 
@@ -77,10 +77,10 @@
                         <col class="col-md-2">
                     </colgroup>
                     <tr>
-                        <th>Event Name<span id="nameSorter" class="sorter"></span></th>
-                        <th>Date<span id="dateSorter" class="sorter"></span></th>
-                        <th>Cost<span id="costSorter" class="sorter"></span></th>
-                        <th>Budget Remaining<span id="budgetSorter" class="sorter"></span></th>
+                        <th><span id="nameLabel" class="sorterLabel">Event Name</span><span id="nameSorter" class="sorter"></span></th>
+                        <th><span id="dateLabel" class="sorterLabel">Date</span><span id="dateSorter" class="sorter"></span></th>
+                        <th><span id="costLabel" class="sorterLabel">Cost</span><span id="costSorter" class="sorter"></span></th>
+                        <th><span id="budgetLabel" class="sorterLabel">Budget Remaining</span><span id="budgetSorter" class="sorter"></span></th>
                     </tr>
                     <tbody id="budgettablebody"></tbody>
                 </table>
