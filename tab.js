@@ -242,6 +242,8 @@ function makeBubbles(){
 		$("#allergies-list").empty();
 	document.getElementById('break-name').value="Bubble Party";
 		$("#to-do").find("tr:gt(0)").remove();
+		allergies=[];
+		changeAllergies();
 		addRow("Soap");
 		addRow("Wire");
 		addRow("Bubble Wands");
@@ -251,6 +253,8 @@ function makeMario(){
 		$("#allergies-list").empty();
 	document.getElementById('break-name').value="Mario Party";
 		$("#to-do").find("tr:gt(0)").remove();
+		allergies=[];
+		changeAllergies();
 		addRow("Mario Cart");
 		addRow("Wii");
 }
@@ -324,6 +328,8 @@ function makeTea(){
 		addRow("Boba");
 		addRow("straws");
 		addRow("Cups");
+		allergies=[];
+		changeAllergies();
 }
 function clearForm(){
 	$("#to-do").find("tr:gt(0)").remove();
