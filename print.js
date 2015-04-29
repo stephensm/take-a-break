@@ -70,7 +70,7 @@
         var popupOrIframe = null;
         var documentToWriteTo = null;
         if (opts["printMode"].toLowerCase() == 'popup') {
-            popupOrIframe = window.open('about:blank', 'printElementWindow', 'width=650,height=440,scrollbars=yes');
+            popupOrIframe = window.open('about:blank', 'printElementWindow', 'width=650,height=440,top=100,left=100,scrollbars=yes');
             documentToWriteTo = popupOrIframe.document;
         }
         else {

@@ -73,7 +73,7 @@ function addRow(item,desc,cost){
        desc = "";
     }
 	if(typeof cost === "undefined") {
-       cost = "0";
+       cost = "";
     }
 	console.log(cost);
 	var table = document.getElementById("to-do");
@@ -88,7 +88,7 @@ function addRow(item,desc,cost){
 	cell2.innerHTML = "<span id='delete_row"+i+"'  class='glyphicon glyphicon-remove' aria-hidden='true' onclick='deleteRow("+i+")'/>";
 	cell3.innerHTML = "<input name='item"+i+"' type='text'  class='form-control input-sm' value='"+item+"'/>";
 	cell4.innerHTML = "<input name='description"+i+"' type='text'  class='form-control input-md' value='"+desc+"'/>";
-	cell5.innerHTML = "<input name='cost"+i+"' type='number' min='0.00' step='0.01' max='1000' class='form-control input-sm 'value='"+cost+"'/>";
+	cell5.innerHTML = "<input name='cost"+i+"' type='number' min='0.00' step='1' max='1000' class='form-control input-sm 'value='"+cost+"'/>";
   	i++;
 	change();
 }
