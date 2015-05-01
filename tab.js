@@ -36,6 +36,9 @@ $( document ).ready(function() {
 		if (event==='froyo'){
 			makeFroyo();
 		}
+		else{
+			setEvent(event);
+		}
 	}
 	if(localStorage.getItem("events") !== null){
 		events=JSON.parse(localStorage.getItem("events"));
@@ -422,6 +425,11 @@ function makeEvent(){
 	
 
 };
+function setEvent(name){
+	loadSavedEvent('new');
+	document.getElementById('break-name').value=name;
+	
+}
 // source http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
 function getUrlParameter(sParam){
     var sPageURL = window.location.search.substring(1);
