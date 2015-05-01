@@ -102,7 +102,7 @@ $(document).ready(function(){
       cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
       cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
       '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
-      '<button class="btn btn-primary" OnClick=" location.href=\"./tab.html?event=donuts\"">Create</button>';
+      '<button class="btn btn-success" OnClick=" location.href="./tab.html?event=' + document.getElementById('titleBox').value + '">Make It</button>';
 
       document.getElementById('titleBox').value = '';
       document.getElementById('descriptionBox').value = '';
