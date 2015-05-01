@@ -428,6 +428,7 @@ function makeEvent(){
 function setEvent(name){
 	loadSavedEvent('new');
 	document.getElementById('break-name').value=name;
+	addRow();
 	
 }
 // source http://stackoverflow.com/questions/19491336/get-url-parameter-jquery

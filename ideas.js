@@ -100,9 +100,10 @@ $(document).ready(function(){
       cell3.innerHTML = 'You';
       cell4.innerHTML = d.toDateString();
       cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
+		var click="location.href='./tab.html?event=" + document.getElementById('titleBox').value+"'"; 
       cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
       '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
-      '<button class="btn btn-success" OnClick=" location.href="./tab.html?event=' + document.getElementById('titleBox').value + '">Make It</button>';
+      '<button class="btn btn-success" OnClick="'+click+'">Make It</button>';
 
       document.getElementById('titleBox').value = '';
       document.getElementById('descriptionBox').value = '';
