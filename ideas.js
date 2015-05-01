@@ -102,7 +102,7 @@ $(document).ready(function(){
       cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
       cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
       '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
-      '<button class="btn btn-primary" OnClick=" location.href=\"./tab.html?event=donuts\"">Create</button>';
+      '<button class="btn btn-success" OnClick=" location.href="./tab.html?event=' + document.getElementById('titleBox').value + '">Make It</button>';
 
       document.getElementById('titleBox').value = '';
       document.getElementById('descriptionBox').value = '';
@@ -110,13 +110,14 @@ $(document).ready(function(){
       $(row).effect("highlight", {}, 3000);
     });
 
-
+    var row;
     // Delete an idea from the table
     $(".glyphicon-remove").click(function() {
-      var row = $(this).parent().parent();
-      $('#deleteIdeaModal').modal('toggle');    // launch confimation modal
+      row = $(this).parent().parent();
+      $('#deleteIdeaModal').modal('show');    // launch confimation modal
 
       $("#deleteIdea").click(function() {
+        console.log(row);
         row.css("background-color","#FF3700");
         row.fadeOut(400, function(){
             row.remove();
@@ -126,22 +127,24 @@ $(document).ready(function(){
 
 
     // Edit an idea on the table
-    // BUG TODO: multiple highlights
+    var editRow;
+    var c1;
+    var c4;
     $(".glyphicon-pencil").click(function() {
-      var row = $(this).parent().parent();
+      editRow = $(this).parent().parent();
       //console.log(document.getElementById("ideasTable").rows[1].cells[1]);
-      $('#editIdeaModal').modal('toggle');    // launch modal
-      var cell1 = row[0].cells[1];
-      var cell4 = row[0].cells[4];
+      $('#editIdeaModal').modal('show');    // launch modal
+      c1 = editRow[0].cells[1];
+      c4 = editRow[0].cells[4];
 
-      document.getElementById('editTitleBox').value = cell1.innerHTML;
-      var cellHtml = cell4.innerHTML;
+      document.getElementById('editTitleBox').value = c1.innerHTML;
+      var cellHtml = c4.innerHTML;
       document.getElementById('editDescriptionBox').value = cellHtml.replace(/<[^>]*>/g, "");
 
       $("#editIdea").click(function() {
-        $(row).effect("highlight", {}, 3000);
-        cell1.innerHTML = document.getElementById('editTitleBox').value;
-        cell4.innerHTML = '<div class=scrollable>' + document.getElementById('editDescriptionBox').value + '</div>';
+        $(editRow).effect("highlight", {}, 1000);
+        c1.innerHTML = document.getElementById('editTitleBox').value;
+        c4.innerHTML = '<div class=scrollable>' + document.getElementById('editDescriptionBox').value + '</div>';
 
         //document.getElementById('editTitleBox').value = '';
         //document.getElementById('editDescriptionBox').value = '';
