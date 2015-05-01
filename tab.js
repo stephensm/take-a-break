@@ -5,7 +5,9 @@ var data ={"name":'',"date":undefined, "time":40,"items":undefined, "desc":undef
 var events=[];
 var allergies=[];
 var todo=[];
-
+var weekday =["Sun", "Mon", "Tue", "Wed","Thur", "Fri","Sat"]
+var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+  "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 var ideas = ['Mario Kart', 'Bubble Tea', 'Sushi Break', 'Cannolis', 'Donuts', 'Ice Cream', 'Bubble Party'];
 
 $( document ).ready(function() {
@@ -167,9 +169,15 @@ function changeEvents(){
 			li1.className="list-group-item";
 			var createA = document.createElement('a');
 			var createAText = document.createTextNode(idea["name"]);
+			if(idea.date){
+				var date=new Date(String(idea.date));
+				var day=weekday[date.getDay()]+" "+monthNames[date.getMonth()]+ " "+date.getDay();
+				createAText=document.createTextNode(day + ": "+idea["name"]);
+			}
 			createA.setAttribute('href', "#");
 			createA.setAttribute('onclick', "loadSavedEvent("+k+")");
 			createA.appendChild(createAText);
+			
 			li1.appendChild(createA);
 			ul.appendChild(li1);
 		}
