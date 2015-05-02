@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  $(".titleError").hide();
+  $(".descError").hide();
+  /*
     // Functionality for the "Show More/Less" button
     $(".hid").hide();
 
@@ -12,7 +15,7 @@ $(document).ready(function(){
         $(this).html('<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"> Show More</span></button>');
       }
     });
-
+  */
     // Voting system - restricted to one vote per user
     // Upvotes
     $(".glyphicon-plus").click(function(){
@@ -50,7 +53,6 @@ $(document).ready(function(){
     // Downvotes
     $(".glyphicon-minus").click(function(){
       var td = $(this).parent();
-      console.log(td);
       var thisCount = td.find('#count');
       var text = thisCount.text();
 
@@ -84,44 +86,57 @@ $(document).ready(function(){
 
     // Add a row to the table with a new idea
     $("#addIdea").click(function(){
-      var table = document.getElementById("ideasTable");
-      var row = table.insertRow();
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-      var cell4 = row.insertCell(3);
-      var cell5 = row.insertCell(4);
-      var cell6 = row.insertCell(5);
-      var d = new Date();
+      var title = document.getElementById('titleBox').value;
+      var description = document.getElementById('descriptionBox').value;
 
-      cell1.innerHTML = '<button class="glyphicon glyphicon-minus btn-xs" aria-hidden="true"></button><span id="count"> 0 </span><button class="glyphicon glyphicon-plus btn-xs" aria-hidden="true"></button>';
-      $(cell1).toggleClass("vote");
-      cell2.innerHTML = document.getElementById('titleBox').value;
-      cell3.innerHTML = 'You';
-      cell4.innerHTML = d.toDateString();
-      cell5.innerHTML = '<div class=scrollable>' + document.getElementById('descriptionBox').value + '</div>';
-		var click="location.href='./tab.html?event=" + document.getElementById('titleBox').value+"'"; 
-      cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
-      '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
-      '<button class="btn btn-success" OnClick="'+click+'">Make It</button>';
+      if(title === "")
+        $(".titleError").show();
+      if(description === "")
+        $(".descError").show();
 
-      document.getElementById('titleBox').value = '';
-      document.getElementById('descriptionBox').value = '';
 
-      $(row).effect("highlight", {}, 3000);
+      if(title != "" && description != "") {
+        $(".titleError").hide();
+        $(".descError").hide();
+        $('#addIdeaModal').modal('hide');
+        var table = document.getElementById("ideasTable");
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var d = new Date();
+
+        cell1.innerHTML = '<button class="glyphicon glyphicon-minus btn-xs" aria-hidden="true"></button><span id="count"> 0 </span><button class="glyphicon glyphicon-plus btn-xs" aria-hidden="true"></button>';
+        $(cell1).toggleClass("vote");
+        cell2.innerHTML = title;
+        cell3.innerHTML = 'You';
+        cell4.innerHTML = d.toDateString();
+        cell5.innerHTML = '<div class=scrollable>' + description + '</div>';
+      
+		    var click="location.href='./tab.html?event=" + title + "'"; 
+        cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
+        '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
+        '<button class="btn btn-success" OnClick="'+ click +'">Make It</button>';
+
+        document.getElementById('titleBox').value = '';
+        document.getElementById('descriptionBox').value = '';
+        $(row).effect("highlight", {}, 3000);
+    }
     });
 
-    var row;
+    var delRow;
     // Delete an idea from the table
     $(".glyphicon-remove").click(function() {
-      row = $(this).parent().parent();
+      delRow = $(this).parent().parent();
       $('#deleteIdeaModal').modal('show');    // launch confimation modal
 
       $("#deleteIdea").click(function() {
-        console.log(row);
-        row.css("background-color","#FF3700");
-        row.fadeOut(400, function(){
-            row.remove();
+        delRow.css("background-color","#FF3700");
+        delRow.fadeOut(400, function(){
+            delRow.remove();
         });
       });
     });
@@ -133,7 +148,6 @@ $(document).ready(function(){
     var c4;
     $(".glyphicon-pencil").click(function() {
       editRow = $(this).parent().parent();
-      //console.log(document.getElementById("ideasTable").rows[1].cells[1]);
       $('#editIdeaModal').modal('show');    // launch modal
       c1 = editRow[0].cells[1];
       c4 = editRow[0].cells[4];
@@ -141,17 +155,33 @@ $(document).ready(function(){
       document.getElementById('editTitleBox').value = c1.innerHTML;
       var cellHtml = c4.innerHTML;
       document.getElementById('editDescriptionBox').value = cellHtml.replace(/<[^>]*>/g, "");
+      $(editRow).effect("highlight", {}, 1000);
 
       $("#editIdea").click(function() {
-        $(editRow).effect("highlight", {}, 1000);
-        c1.innerHTML = document.getElementById('editTitleBox').value;
-        c4.innerHTML = '<div class=scrollable>' + document.getElementById('editDescriptionBox').value + '</div>';
+        var eTitle = document.getElementById('editTitleBox').value;
+        var eDesc = document.getElementById('editDescriptionBox').value;
 
-        //document.getElementById('editTitleBox').value = '';
-        //document.getElementById('editDescriptionBox').value = '';
+        if(eTitle === "")
+          $(".titleError").show();
+        if(eDesc === "")
+          $(".descError").show();
+
+        if(eTitle != "" && eDesc != "") {
+          $(".titleError").hide();
+          $(".descError").hide();
+          $('#editIdeaModal').modal('hide');
+
+          c1.innerHTML = eTitle;
+          c4.innerHTML = '<div class=scrollable>' + eDesc + '</div>';
+        }
       });
     });
 
+    // Hide error messages upon closing the modal
+    $(".closeModal").click(function() {
+      $(".titleError").hide();
+      $(".descError").hide();
+    });
 
     // Searching functionality
     $("#searchBox").keyup(function() {
@@ -177,10 +207,8 @@ $(document).ready(function(){
 
       for(var i = 0; i < rowData.length - 1; i++){
         for(var j = 0; j < rowData.length - (i + 1); j++) {
-          //console.log(rowData.item(j).getElementsByTagName('td')[0].find('#count'));
           var td1 = $(rowData.item(j).getElementsByTagName('td').item(0));
           var td2 = $(rowData.item(j+1).getElementsByTagName('td').item(0));
-          //console.log(td);
           if(parseInt(td1.find('#count').text()) < parseInt(td2.find('#count').text()))
             tableData.insertBefore(rowData.item(j+1),rowData.item(j));
         }

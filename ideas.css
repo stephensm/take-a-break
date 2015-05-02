@@ -74,3 +74,11 @@ td {
     margin-left: 12px;
     margin-right: 12px;
 }
+
+.titleError {
+    color: red;
+}
+
+.descError {
+    color: red;
+}

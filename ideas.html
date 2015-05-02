@@ -2,8 +2,7 @@
 
 <!-- TODO:
   - fix bug: change colors on hover of clicked voting buttons
-  - fix bug: editing can affect multiple rows
-  - "creating" study breaks
+  - format dates
 -->
 
 <html>
@@ -90,7 +89,7 @@
         </td>
         <td>Mario Kart</td>
         <td>GRTim</td>
-        <td>March 30, 2015</td>
+        <td>Wed April 15 2015</td>
         <td>Eat food and play Mario Kart all day</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=mario'">Make It</button></td>
       </tr>
@@ -102,7 +101,7 @@
         </td>
         <td>Sushi Break</td>
         <td>Bob</td>
-        <td>April 3, 2015</td>
+        <td>Fri April 03 2015</td>
         <td>Eat a lot of sushi. Raw fish ftw</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=sushi'">Make It</button></td>
       </tr>
@@ -114,7 +113,7 @@
         </td>
         <td>Cannolis</td>
         <td>Sarah</td>
-        <td>April 8, 2015</td>
+        <td>Wed April 08 2015</td>
         <td>Need I say any more?</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=cannolies'">Make It</button></td>
       </tr>
@@ -126,7 +125,7 @@
         </td>
         <td>Donuts</td>
         <td>Maria</td>
-        <td>April 10, 2015</td>
+        <td>Fri April 10 2015</td>
         <td>Eat donuts from Dunkin. Make It sure to ask students what they want and track allergies!</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=donuts'">Make It</button></td>
       </tr>
@@ -138,7 +137,7 @@
         </td>
         <td>Bubble Tea</td>
         <td>ABC</td>
-        <td>April 4, 2015</td>
+        <td>Sat April 04 2015</td>
         <td>Order different types of bubble tea</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=tea'">Make It</button></td>
       </tr>
@@ -150,7 +149,7 @@
         </td>
         <td>Random Event</td>
         <td>Bob</td>
-        <td>April 7, 2015</td>
+        <td>Tues April 07 2015</td>
         <td>Eat random stuff</td>
         <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=froyo'">Make It</button></td>
       </tr>
@@ -162,7 +161,7 @@
         </td>
         <td>Froyo</td>
         <td>Steph</td>
-        <td>April 9, 2015</td>
+        <td>Thurs April 09 2015</td>
         <td>Eat froyo</td>
 		<td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=froyo'">Make It</button></td>
       </tr>
@@ -174,7 +173,7 @@
         </td>
         <td>Random Food</td>
         <td>GRTim</td>
-        <td>April 3, 2015</td>
+        <td>Fri April 3 2015</td>
         <td>I'll bring in random food and you decide whether or not to hate me</td>
         <td><button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button><button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button><button class="btn btn-success" OnClick=" location.href='./tab.html?event=froyo'">Make It</button></td>
       </tr>
@@ -205,17 +204,20 @@
         <div style="margin-bottom:20px">
         <label for="titleBox">Title: </label>
         <input type="text" id="titleBox">
+        <div class="titleError">Title cannot be empty.</div>
         </div>
-        
+
         <div>
         <label for="descriptionBox">Description: </label>
         <textarea rows="5" cols="70" id="descriptionBox"></textarea>
         </div>
+        <div class="descError">Description cannot be empty.</div>
+
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="addIdea" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addIdea">Save changes</button>
       </div>
     </div>
   </div>
@@ -257,17 +259,19 @@
         <div style="margin-bottom:20px">
         <label for="editTitleBox">Title: </label>
         <input type="text" id="editTitleBox">
+        <div class="titleError">Title cannot be empty.</div>
         </div>
         
         <div>
         <label for="editDescriptionBox">Description: </label>
         <textarea rows="5" cols="70" id="editDescriptionBox"></textarea>
         </div>
+        <div class="descError">Description cannot be empty.</div>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="editIdea" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="editIdea">Save changes</button>
       </div>
     </div>
   </div>
