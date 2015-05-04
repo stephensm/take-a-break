@@ -60,3 +60,8 @@ body {
 .block .col-md-4{
     padding: 0px;
 }
+
+td a{
+    text-decoration: none;
+    color: black;
+}
