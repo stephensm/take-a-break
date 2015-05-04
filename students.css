@@ -41,3 +41,22 @@ body {
     background-color: #990000;
     border: solid white;
 }
+
+.glyphicon{
+    /* not best practice to add css to bootstrap class necessarily,
+    but simplifies the code here. */
+    font-size: 1.5em;
+}
+
+.block{
+    display: block;
+    padding: 0px;
+}
+
+.col-md-12 .col-md-12{
+    padding: 0px;
+}
+
+.block .col-md-4{
+    padding: 0px;
+}

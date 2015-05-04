@@ -22,13 +22,21 @@
                 var userText = $(element).val();
                 var parentElement = $(element).parent(); //content changes so must be remembered
                 parentElement.html(userText); //"client-side protecting" from injection :p two/three word paradox sure, but it helps at least
-                parentElement.append(" <span class='glyphicon glyphicon-pencil edit' aria-hidden='true'></span>");
+                //parentElement.append(" <span class='glyphicon glyphicon-pencil edit' aria-hidden='true'></span>");
             }
 
             $(".studwrap").on('click', ".edit",function(){
-                submitText("#newtext"); //prevent two elements from simultaneously having this id
-                console.log("hello");
-                $(this).parent().html("<input autofocus id='newtext'>");
+                submitText("#newName"); //prevent two elements from simultaneously having this id
+                submitText("#newEmail");
+                console.log($(this).parent().html());
+                console.log($(this).parent().text());
+
+                console.log($(this).parent().parent().find("td:nth-child(1)").text());
+                var oldName = $(this).parent().parent().find("td:nth-child(1)").text();
+                $(this).parent().parent().find("td:nth-child(1)").html("<input autofocus id='newName' value='"+oldName+"' onclick='this.select()' />");
+                $(this).parent().parent().find("td:nth-child(1)").select();
+                $(this).parent().parent().find("td:nth-child(2)").html("<input id='newEmail' value="+$(this).parent().parent().find("td:nth-child(2)").text()+" onclick='this.select()' />");
+                //$(this).parent().parent().find("td:nth-child(3)").html("<input autofocus id='newtext' value="+$(this).parent().text()+" >");
             });
 
             //submit with the enter key (13)
@@ -36,8 +44,17 @@
             $(document).keydown(function(evt){
                 console.log(event);
                 if(evt.which === 13){
-                    submitText("#newtext");
+                    submitText("#newName");
+                    submitText("#newEmail");
                 }
+            });
+
+            $(".hiddenContent").css("visibility", "hidden");
+
+            $("tr").hover(function(){
+                $(this).find(".hiddenContent").css("visibility", "visible");
+            }, function(){
+                $(".hiddenContent").css("visibility", "hidden");
             });
         });
     </script>
@@ -90,33 +107,89 @@
                     <h1>Students</h1>
                     <br />
                     <br />
-                    <div class="lead"><b>Allergies</b></div>
-                    <div class="row">
-                      <div class="col-md-3">Nuts (17 students)</div>
-                      <div class="col-md-3">Vegetarian (13 students)</div>
-                      <div class="col-md-3">Dairy (12 students)</div>
-                      <div class="col-md-3">Shellfish (6 students)</div>
+                    <div class="lead" id="allergies-header"><b>Summary of Allergies</b></div>
+                    <div class="col-md-12 block"> 
+                        <div class="table-responsive col-md-3">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td><strong>Allergy</strong></td>
+                                    <td><strong># of Students</strong></td> 
+                                </tr>
+                                <tr>
+                                    <td>Nuts</td>
+                                    <td>17 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Vegetarian</td>
+                                    <td>13 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Dairy</td>
+                                    <td>12 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Shellfish</td>
+                                    <td>6 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Gluten</td>
+                                    <td>5 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Vegan</td>
+                                    <td>3 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Eggs</td>
+                                    <td>1 student</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-3">Gluten (5 students)</div>
-                      <div class="col-md-3">Vegan (3 students)</div>
-                      <div class="col-md-3">Eggs (1 student)</div>
+
+                    <br />
+                    <br />
+                    <div class="lead" id="times-header"><b>Summary of Best Times</b></div>      
+                    <div class="col-md-12 block"> 
+                        <div class="table-responsive col-md-4">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td><strong>Day</strong></td>
+                                    <td><strong>Time</strong></td> 
+                                    <td><strong># of Students</strong></td> 
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>9pm</td>
+                                    <td>40 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>11pm</td>
+                                    <td>32 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>5pm</td>
+                                    <td>29 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>12pm</td>
+                                    <td>25 students</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>1pm</td>
+                                    <td>22 students</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                     <br />
                     <br />
-                    <div class="lead"><b>Best Times</b></div>
-                    <div class="row">
-                      <div class="col-md-3">Tuesdays at 9pm (40 students)</div>
-                      <div class="col-md-3">Wednesdays at 11pm (32 students)</div>
-                      <div class="col-md-3">Fridays at 5pm (29 students)</div>
-                      <div class="col-md-3">Saturdays at 12pm (25 students)</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">Sundays at 1pm (22 students)</div>
-                    </div>
-                    <br />
-                    <br />
-                    <div class="lead"><b>Students by Individual (45)</b></div>
+
+                    <div class="lead" id="student-header"><b>Students by Individual (45)</b></div>
                     <div class="table-responsive studwrap">
                         <table class="table table-striped">
                             <tr>
@@ -124,11 +197,12 @@
                                 <td><strong>Email</strong></td>
                                 <td><strong>Allergies</strong></td>
                                 <td><strong>Availability</strong></td>
+                                <td><strong>Edit</strong></td>
                                 <td><strong>Delete</strong></td>
                             <tr>
                             <tr>
                                 <td>Allie D. Barton</td>
-                                <td>adb@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>adb@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Dairy</li>
@@ -137,132 +211,144 @@
                                         <li>Gluten</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Ash Ketchum</td>
-                                <td>ichooseyou@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>ichooseyou@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Betty Cooper</td>
-                                <td>riverdale@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>riverdale@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Blue Bomber</td>
-                                <td>megaman@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>megaman@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Nuts</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Bruce Wayne</td>
-                                <td>imnotbatman@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>imnotbatman@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Vegan</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Cammie Grayson</td>
-                                <td>dgrayman@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>dgrayman@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Eggs</li>
                                         <li>Shellfish</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Carmen Sandiego</td>
-                                <td>whereintheworld@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>whereintheworld@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Cookie Monster</td>
-                                <td>cisfor@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>cisfor@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Shellfish</li>
                                         <li>Vegetarian</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Donald Duck</td>
-                                <td>ducktales@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>ducktales@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Easter Bunny</td>
-                                <td>springrabbit@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>springrabbit@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Vegan</li>
                                         <li>Shellfish</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Francine Frensky</td>
-                                <td>andisayhey@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>andisayhey@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>Nuts</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                             <tr>
                                 <td>Jennifer Lopez II</td>
-                                <td>jlo@mit.edu <span class="glyphicon glyphicon-pencil edit" aria-hidden="true"></span></td>
+                                <td>jlo@mit.edu</td>
                                 <td>
                                     <ol>
                                         <li>None</li>
                                     </ol>
                                 </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal">Click for Modal</a></td>
-                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                <td><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></td>
                             <tr>
                         </table>
                     </div>
