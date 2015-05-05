@@ -26,3 +26,24 @@ body {
     text-align: center;
     width: 80px;
 }
+
+#budgettotalcontainer {
+    position: relative;
+}
+
+#budgettotallabel {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 15px;
+}
+
+.budgettotalbutton {
+    width: 60px;
+    height: 20px;
+    font-size: 15px;
+}
+
+#budgettotalinput {
+    width: 100px;
+}

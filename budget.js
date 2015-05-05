@@ -6,7 +6,7 @@ function getGraphData() {
         x.push({
             name: events[i]['Event'],
             x: (new Date(events[i]['Date'])).getTime(), 
-            y: parseFloat(events[i]['Total'])
+            y: events[i]['Total']
         });
         //x.push(events[i]['Date'], parseFloat(events[i]['Total']));
     }
@@ -16,7 +16,6 @@ function getGraphData() {
 
 function getBestFit() {
     var data = getGraphData();
-    console.log(data);
     //data[0][0] = data[0][1] * m + n
     //minimize sum([(data[i][0] - data[0][0] + (data[0][1] - data[i][1]) * m)^2] for i)
     //0 = sum((data[i][0] - data[0][0] + (data[0][1] - data[i][1]) * m) * (data[0][1] - data[i][1]))
@@ -32,7 +31,6 @@ function getBestFit() {
     var newData = [];
     newData.push(data[0]);
     newData.push([n, 0]);
-    console.log(newData);
     return newData;
 }
 
@@ -43,6 +41,10 @@ function getBestUse() {
 
 $(function () {
 
+    for (var i = 0; i < events.length; i++) {
+        events[i]['Total'] = parseFloat(events[i]['Total']);
+    }
+
     /*
     hs.Expander.prototype.onMouseOut = function () {
         this.close();
@@ -51,103 +53,154 @@ $(function () {
 
     // Get the CSV and create the chart
     //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
-    $('#container').highcharts({
-        title: {
-            text: ''
-        },
-
-        xAxis: {
-            type: 'datetime',
-            tickInterval: 30 * 24 * 3600 * 1000, // one month
-            dateTimeLabelFormats: {
-                month: '%B',
+    var drawChart = function() {
+        $('#container').highcharts({
+            title: {
+                text: ''
             },
-            tickWidth: 0,
-            gridLineWidth: 1,
-            labels: {
-                align: 'left',
-                x: 3,
-                y: 15
-            },
-            max: (new Date('5/23/2015')).getTime()
-        },
-
-        yAxis: {
-            title: { text: null },
-            labels: {
-                align: 'right',
-                x: 0,
-                y: -2,
-                format: '${value:.0f}'
-            },
-            showFirstLabel: false,
-            min: 0,
-            max: events[0]['Total']
-        },
-        
-        tooltip: { enabled: false },
-
-        /*tooltip: {
-            dateTimeLabelFormats: {
-                hour: '%A, %b %e, %Y'
-            }
-        },*/
-
-        plotOptions: {
-            series: {
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function (e) {
-                            if (this.series.name === "Best Fit") {
-                                return;
-                            }
-                            console.log(this);
-                            var date = Highcharts.dateFormat('%m/%e/%y', this.x);
-                            hs.htmlExpand(null, {
-                                pageOrigin: {
-                                    x: e.pageX || e.clientX,
-                                    y: e.pageY || e.clientY
-                                },
-                                headingText: this.name + ' (' + date + ')',
-                                maincontentText: '$' + this.y,
-                                width: 200
-                            });
-                        }
-                    }
-                }                
-            }
-        },
-
-        series: [{
-            name: 'Remaining Budget',
-            data: getGraphData(),
-            lineWidth: 4,
-            marker: {
-                enabled: true,
-                radius: 6
-            }
-        }, {
-            name: 'Best Fit',
-            data: getBestFit(),
-            lineWidth: 2,
-            marker: {
-                enabled: false
-            },
-            zIndex: -1
-        }, {
-            name: 'Best Use',
-            data: getBestUse(),
-            lineWidth: 2,
-            marker: {
-                enabled: false
-            },
-            zIndex: -2
-        }]
-    });
     
-    $('#budgetremaining').text(events[events.length - 1]['Total']);
-    $('#budgettotal').val(events[0]['Total']);
+            xAxis: {
+                type: 'datetime',
+                tickInterval: 30 * 24 * 3600 * 1000, // one month
+                dateTimeLabelFormats: {
+                    month: '%B',
+                },
+                tickWidth: 0,
+                gridLineWidth: 1,
+                labels: {
+                    align: 'left',
+                    x: 3,
+                    y: 15
+                },
+                max: (new Date('5/23/2015')).getTime()
+            },
+    
+            yAxis: {
+                title: { text: null },
+                labels: {
+                    align: 'right',
+                    x: 0,
+                    y: -2,
+                    format: '${value:.0f}'
+                },
+                showFirstLabel: false,
+                min: 0,
+                max: events[0]['Total']
+            },
+            
+            tooltip: { enabled: false },
+    
+            /*tooltip: {
+                dateTimeLabelFormats: {
+                    hour: '%A, %b %e, %Y'
+                }
+            },*/
+    
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function (e) {
+                                if (this.series.name === "Best Fit") {
+                                    return;
+                                }
+                                console.log(this);
+                                var date = Highcharts.dateFormat('%m/%e/%y', this.x);
+                                hs.htmlExpand(null, {
+                                    pageOrigin: {
+                                        x: e.pageX || e.clientX,
+                                        y: e.pageY || e.clientY
+                                    },
+                                    headingText: this.name + ' (' + date + ')',
+                                    maincontentText: '$' + this.y,
+                                    width: 200
+                                });
+                            }
+                        }
+                    }                
+                }
+            },
+    
+            series: [{
+                name: 'Remaining Budget',
+                data: getGraphData(),
+                lineWidth: 4,
+                marker: {
+                    enabled: true,
+                    radius: 6
+                }
+            }, {
+                name: 'Best Fit',
+                data: getBestFit(),
+                lineWidth: 2,
+                marker: {
+                    enabled: false
+                },
+                zIndex: -1
+            }, {
+                name: 'Best Use',
+                data: getBestUse(),
+                lineWidth: 2,
+                marker: {
+                    enabled: false
+                },
+                zIndex: -2
+            }]
+        });
+    };
+    //drawChart();
+    
+    var budgetRemaining = events[events.length - 1]['Total'];
+    var origBudgetTotal = events[0]['Total'];
+    var budgetTotal = events[0]['Total'];
+    var lastBudgetTotal = budgetTotal;
+    var refreshBudgetTotal = function() {
+        $('#budgettotaldisplay').show();
+        $('#budgettotaledit').show();
+        $('#budgettotalinput').hide();
+        $('#budgettotalsave').hide();
+        $('#budgettotalreset').hide();
+        $('#budgettotalinput').val(budgetTotal);
+        $('#budgettotaldisplay').text(budgetTotal);
+        budgetRemaining += budgetTotal - lastBudgetTotal;
+        $('#budgetremaining').text(budgetRemaining);
+        for (var i = 0; i < events.length; i++) {
+            events[i]['Total'] += budgetTotal - lastBudgetTotal;
+        }
+        lastBudgetTotal = budgetTotal;
+        sortEventsBy(sortWhich, sortUp);
+        drawChart();
+    };
+    $('#budgettotaledit').click(function(e) {
+        $('#budgettotaldisplay').hide();
+        $('#budgettotaledit').hide();
+        $('#budgettotalinput').show();
+        $('#budgettotalsave').show();
+        $('#budgettotalreset').show();
+        $('#budgettotalinput').select();
+    });
+    $('#budgettotalsave').click(function(e) {
+        if (isNaN($('#budgettotalinput').val())) {
+            $('#budgettotallabel').css('color', 'red');
+            $('#budgettotallabel').text('Not a number');
+        } else {
+            $('#budgettotallabel').css('color', 'green');
+            $('#budgettotallabel').text('');
+            budgetTotal = parseFloat($('#budgettotalinput').val());
+            refreshBudgetTotal();
+        }
+    });
+    $('#budgettotalreset').click(function(e) {
+        $('#budgettotallabel').css('color', 'green');
+        $('#budgettotallabel').text('');
+        refreshBudgetTotal();
+    });
+    $('#budgettotalinput').keyup(function(e) {
+        if (e.keyCode == 13) {
+            $('#budgettotalsave').click();
+        }
+    });
     
     var sorterNames = ['nameSorter', 'dateSorter', 'costSorter', 'budgetSorter'];
     var fillInSorter = function(id) {
@@ -184,7 +237,15 @@ $(function () {
         } else if (which === 'budgetSorter') {
             ele = 'Total';
         }
-        events.sort(function(a, b) {
+        var displayEvents = [];
+        for (var i = 0; i < events.length; i++) {
+            var x = {};
+            for (var attr in events[i]) {
+                x[attr] = events[i][attr];
+            }
+            displayEvents.push(x);
+        }
+        displayEvents.sort(function(a, b) {
             var res;
             if (ele === 'Date') {
                 res = (new Date(b[ele])).getTime() - (new Date(a[ele])).getTime();
@@ -196,8 +257,8 @@ $(function () {
             return res * (up ? 1 : -1);
         });
         $('#budgettablebody').html('');
-        for (var i = 0; i < events.length; i++) {
-            var e = events[i];
+        for (var i = 0; i < displayEvents.length; i++) {
+            var e = displayEvents[i];
             if (e['Event'] !== 'Total') {
                 $('#budgettablebody').append('<tr><td>' + e['Event'] + '</td><td>' + e['Date'] + '</td><td>$' + e['Cost'] + '</td><td>$' + e['Total'] + '</td></tr>');
             }
@@ -217,5 +278,5 @@ $(function () {
             sortEventsBy(which, true);
         }
     });
-    sortEventsBy(sortWhich, sortUp);
+    refreshBudgetTotal();
 });
