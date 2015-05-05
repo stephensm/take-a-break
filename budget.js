@@ -43,6 +43,7 @@ $(function () {
 
     for (var i = 0; i < events.length; i++) {
         events[i]['Total'] = parseFloat(events[i]['Total']);
+        events[i]['Index'] = i;
     }
 
     /*
@@ -89,6 +90,15 @@ $(function () {
             },
             
             tooltip: { enabled: false },
+            
+            chart: {
+                events: {
+                    click: function (e) {
+                        console.log('rawr');
+                        hs.close();
+                    }
+                }
+            },
     
             /*tooltip: {
                 dateTimeLabelFormats: {
@@ -105,16 +115,39 @@ $(function () {
                                 if (this.series.name === "Best Fit") {
                                     return;
                                 }
-                                console.log(this);
+                                var event = events[this.index];
                                 var date = Highcharts.dateFormat('%m/%e/%y', this.x);
+                                var heading = this.name;
+                                if (heading.length > 18) {
+                                    heading = heading.substring(0, 18) + '...';
+                                }
+                                heading += '<br/>' + date;
+                                var text = '<br/>Cost $' + event['Cost'] + ' with $' + this.y + ' left<br/><a class="geteventdetails' + event['Index'] + '"><span style="display: none">' + this.index + '</span>Click for details</a>';
+                                if (event['Index'] == 0) {
+                                    text = '<br/>Started with $' + budgetTotal;
+                                }
                                 hs.htmlExpand(null, {
                                     pageOrigin: {
                                         x: e.pageX || e.clientX,
                                         y: e.pageY || e.clientY
                                     },
-                                    headingText: this.name + ' (' + date + ')',
-                                    maincontentText: '$' + this.y,
+                                    headingText: heading,
+                                    maincontentText: text,
                                     width: 200
+                                });
+    
+                                $('.geteventdetails' + event['Index']).click(function(e) {
+                                    var eventNum = parseInt(this.children[0].innerHTML);
+                                    if (eventNum == 0) {
+                                        return;
+                                    }
+                                    $('html,body').animate({
+                                        scrollTop: $('#event' + eventNum).offset().top
+                                    });
+                                    for (var i = 1; i < events.length; i++) {
+                                        $('#event' + i).css('background-color', 'white');
+                                    }
+                                    $('#event' + eventNum).css('background-color', 'LightGray');
                                 });
                             }
                         }
@@ -165,6 +198,11 @@ $(function () {
         $('#budgettotaldisplay').text(budgetTotal);
         budgetRemaining += budgetTotal - lastBudgetTotal;
         $('#budgetremaining').text(budgetRemaining);
+        if (budgetRemaining < 0) {
+            $('#budgetremaining').css('color', 'red');
+        } else {
+            $('#budgetremaining').css('color', 'black');
+        }
         for (var i = 0; i < events.length; i++) {
             events[i]['Total'] += budgetTotal - lastBudgetTotal;
         }
@@ -260,7 +298,7 @@ $(function () {
         for (var i = 0; i < displayEvents.length; i++) {
             var e = displayEvents[i];
             if (e['Event'] !== 'Total') {
-                $('#budgettablebody').append('<tr><td>' + e['Event'] + '</td><td>' + e['Date'] + '</td><td>$' + e['Cost'] + '</td><td>$' + e['Total'] + '</td></tr>');
+                $('#budgettablebody').append('<tr id="event' + e['Index'] + '"><td>' + e['Event'] + '</td><td>' + e['Date'] + '</td><td>$' + e['Cost'] + '</td><td>$' + e['Total'] + '</td></tr>');
             }
         }
     };
