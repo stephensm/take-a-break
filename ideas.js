@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $(".titleError").hide();
   $(".descError").hide();
+  var newRows = 0;
   /*
     // Functionality for the "Show More/Less" button
     $(".hid").hide();
@@ -115,22 +116,48 @@ $(document).ready(function(){
         cell3.innerHTML = 'You';
         cell4.innerHTML = d.toDateString();
         cell5.innerHTML = '<div class=scrollable>' + description + '</div>';
-      
-		    var click="location.href='./tab.html?event=" + title + "'"; 
-        cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true"></button>' +
-        '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true"></button>' +
+        
+        var editButton = document.createElement("input");
+        editButton.type = "button";
+        editButton.className = "glyphicon glyphicon-pencil btn-sm"
+
+        var delButton = document.createElement("input");
+        delButton.type = "button";
+        delButton.className = "glyphicon glyphicon-remove btn-sm"
+
+		    var click="location.href='./tab.html?event=" + title + "'";
+        
+        cell6.innerHTML = '<button class="glyphicon glyphicon-pencil btn-sm" aria-hidden="true" id="newEdit' + newRows + '"></button>' +
+        '<button class="glyphicon glyphicon-remove btn-sm" aria-hidden="true" id="newRem' + newRows + '"></button>' +
         '<button class="btn btn-success" OnClick="'+ click +'">Make It</button>';
+        
+        var removeB = document.getElementById('newRem' + newRows);
+        removeB.addEventListener("click", function(){removeIdea(removeB);}, false);
+
+        var editB = document.getElementById('newEdit' + newRows);
+        editB.addEventListener("click", function(){editIdea(editB);}, false);
 
         document.getElementById('titleBox').value = '';
         document.getElementById('descriptionBox').value = '';
         $(row).effect("highlight", {}, 3000);
+        newRows += 1;
     }
     });
 
-    var delRow;
     // Delete an idea from the table
     $(".glyphicon-remove").click(function() {
-      delRow = $(this).parent().parent();
+      removeIdea(this);
+    });
+
+
+    // Edit an idea on the table
+    $(".glyphicon-pencil").click(function() {
+      editIdea(this);
+    });
+
+    var delRow;
+    function removeIdea(target) {
+      delRow = $(target).parent().parent();
       $('#deleteIdeaModal').modal('show');    // launch confimation modal
 
       $("#deleteIdea").click(function() {
@@ -139,15 +166,13 @@ $(document).ready(function(){
             delRow.remove();
         });
       });
-    });
+    }
 
-
-    // Edit an idea on the table
     var editRow;
     var c1;
     var c4;
-    $(".glyphicon-pencil").click(function() {
-      editRow = $(this).parent().parent();
+    function editIdea(target) {
+      editRow = $(target).parent().parent();
       $('#editIdeaModal').modal('show');    // launch modal
       c1 = editRow[0].cells[1];
       c4 = editRow[0].cells[4];
@@ -175,7 +200,7 @@ $(document).ready(function(){
           c4.innerHTML = '<div class=scrollable>' + eDesc + '</div>';
         }
       });
-    });
+    }
 
     // Hide error messages upon closing the modal
     $(".closeModal").click(function() {
