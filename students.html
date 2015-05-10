@@ -122,251 +122,257 @@
                     <h1>Students</h1>
                     <br />
                     <br />
-                    <div class="lead" id="allergies-header"><b>Summary of Allergies</b></div>
-                    <div class="col-md-12 block"> 
-                        <div class="table-responsive col-md-3">
+
+                    <div class="leftwrapper col-md-4">
+                        <div class="lead" id="allergies-header"><b>Summary of Allergies</b></div>
+                        <div class="col-md-12 block"> 
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td><strong>Allergy</strong></td>
+                                        <td><strong># of Students</strong></td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Nuts</td>
+                                        <td>17 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vegetarian</td>
+                                        <td>13 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dairy</td>
+                                        <td>12 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shellfish</td>
+                                        <td>6 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gluten</td>
+                                        <td>5 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vegan</td>
+                                        <td>3 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Eggs</td>
+                                        <td>1 student</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br />
+                        <br />
+                        <div class="lead" id="times-header"><b>Summary of Best Times</b></div>      
+                        <div class="col-md-12 block"> 
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td><strong>Day</strong></td>
+                                        <td><strong>Time</strong></td> 
+                                        <td><strong># of Students</strong></td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Tuesday</td>
+                                        <td>9pm</td>
+                                        <td>40 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                        <td>11pm</td>
+                                        <td>32 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Friday</td>
+                                        <td>5pm</td>
+                                        <td>29 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Saturday</td>
+                                        <td>12pm</td>
+                                        <td>25 students</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunday</td>
+                                        <td>1pm</td>
+                                        <td>22 students</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+
+                    <div class="rightwrapper col-md-8">
+                        <div class="table-responsive studwrap">
+                        <div class="lead" id="student-header"><b>Students by Individual (45)</b></div>
                             <table class="table table-striped">
                                 <tr>
-                                    <td><strong>Allergy</strong></td>
-                                    <td><strong># of Students</strong></td> 
-                                </tr>
+                                    <td><strong>Name</strong></td>
+                                    <td><strong>Email</strong></td>
+                                    <td><strong>Allergies</strong></td>
+                                    <td><strong>Availability</strong></td>
+                                    <td><strong>Edit</strong></td>
+                                    <td><strong>Delete</strong></td>
                                 <tr>
-                                    <td>Nuts</td>
-                                    <td>17 students</td>
-                                </tr>
                                 <tr>
-                                    <td>Vegetarian</td>
-                                    <td>13 students</td>
-                                </tr>
+                                    <td>Allie D. Barton</td>
+                                    <td>adb@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Dairy</li>
+                                            <li>Nuts</li>
+                                            <li>Shellfish</li>
+                                            <li>Gluten</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
                                 <tr>
-                                    <td>Dairy</td>
-                                    <td>12 students</td>
-                                </tr>
                                 <tr>
-                                    <td>Shellfish</td>
-                                    <td>6 students</td>
-                                </tr>
+                                    <td>Ash Ketchum</td>
+                                    <td>ichooseyou@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>None</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span</a></td>
                                 <tr>
-                                    <td>Gluten</td>
-                                    <td>5 students</td>
-                                </tr>
                                 <tr>
-                                    <td>Vegan</td>
-                                    <td>3 students</td>
-                                </tr>
+                                    <td>Betty Cooper</td>
+                                    <td>riverdale@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>None</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
                                 <tr>
-                                    <td>Eggs</td>
-                                    <td>1 student</td>
-                                </tr>
+                                <tr>
+                                    <td>Blue Bomber</td>
+                                    <td>megaman@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Nuts</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Bruce Wayne</td>
+                                    <td>imnotbatman@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Vegan</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Lenalee Walker</td>
+                                    <td>dgrayman@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Dairy</li>
+                                            <li>Shellfish</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Carmen Sandiego</td>
+                                    <td>whereintheworld@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>None</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Cookie Monster</td>
+                                    <td>cisfor@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Shellfish</li>
+                                            <li>Vegetarian</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Donald Duck</td>
+                                    <td>ducktales@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Eggs</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Easter Bunny</td>
+                                    <td>springrabbit@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Vegan</li>
+                                            <li>Shellfish</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Francine Frensky</td>
+                                    <td>andisayhey@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>Nuts</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
+                                <tr>
+                                    <td>Joshua Lopez</td>
+                                    <td>jlo@mit.edu</td>
+                                    <td>
+                                        <ol>
+                                            <li>None</li>
+                                        </ol>
+                                    </td>
+                                    <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
+                                    <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
+                                    <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
+                                <tr>
                             </table>
                         </div>
                     </div>
 
-                    <br />
-                    <br />
-                    <div class="lead" id="times-header"><b>Summary of Best Times</b></div>      
-                    <div class="col-md-12 block"> 
-                        <div class="table-responsive col-md-4">
-                            <table class="table table-striped">
-                                <tr>
-                                    <td><strong>Day</strong></td>
-                                    <td><strong>Time</strong></td> 
-                                    <td><strong># of Students</strong></td> 
-                                </tr>
-                                <tr>
-                                    <td>Tuesday</td>
-                                    <td>9pm</td>
-                                    <td>40 students</td>
-                                </tr>
-                                <tr>
-                                    <td>Wednesday</td>
-                                    <td>11pm</td>
-                                    <td>32 students</td>
-                                </tr>
-                                <tr>
-                                    <td>Friday</td>
-                                    <td>5pm</td>
-                                    <td>29 students</td>
-                                </tr>
-                                <tr>
-                                    <td>Saturday</td>
-                                    <td>12pm</td>
-                                    <td>25 students</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunday</td>
-                                    <td>1pm</td>
-                                    <td>22 students</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <br />
-                    <br />
-
-                    <div class="lead" id="student-header"><b>Students by Individual (45)</b></div>
-                    <div class="table-responsive studwrap">
-                        <table class="table table-striped">
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td><strong>Email</strong></td>
-                                <td><strong>Allergies</strong></td>
-                                <td><strong>Availability</strong></td>
-                                <td><strong>Edit</strong></td>
-                                <td><strong>Delete</strong></td>
-                            <tr>
-                            <tr>
-                                <td>Allie D. Barton</td>
-                                <td>adb@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Dairy</li>
-                                        <li>Nuts</li>
-                                        <li>Shellfish</li>
-                                        <li>Gluten</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Ash Ketchum</td>
-                                <td>ichooseyou@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>None</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span</a></td>
-                            <tr>
-                            <tr>
-                                <td>Betty Cooper</td>
-                                <td>riverdale@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>None</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Blue Bomber</td>
-                                <td>megaman@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Nuts</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Bruce Wayne</td>
-                                <td>imnotbatman@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Vegan</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Lenalee Walker</td>
-                                <td>dgrayman@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Dairy</li>
-                                        <li>Shellfish</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Carmen Sandiego</td>
-                                <td>whereintheworld@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>None</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Cookie Monster</td>
-                                <td>cisfor@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Shellfish</li>
-                                        <li>Vegetarian</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Donald Duck</td>
-                                <td>ducktales@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Eggs</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Easter Bunny</td>
-                                <td>springrabbit@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Vegan</li>
-                                        <li>Shellfish</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Francine Frensky</td>
-                                <td>andisayhey@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>Nuts</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                            <tr>
-                                <td>Joshua Lopez</td>
-                                <td>jlo@mit.edu</td>
-                                <td>
-                                    <ol>
-                                        <li>None</li>
-                                    </ol>
-                                </td>
-                                <td><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-calendar hiddenContent" aria-hidden="true"></span></a></td>
-                                <td><span class="glyphicon glyphicon-pencil edit hiddenContent" aria-hidden="true"></span></td>
-                                <td><a href="#" data-toggle="modal" data-target="#deleteModal"><span class="glyphicon glyphicon-remove hiddenContent" aria-hidden="true"></span></a></td>
-                            <tr>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
